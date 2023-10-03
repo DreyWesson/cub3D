@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 13:27:01 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/03 15:13:44 by doduwole         ###   ########.fr       */
+/*   Created: 2023/01/02 10:27:28 by doduwole          #+#    #+#             */
+/*   Updated: 2023/01/16 16:37:56 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./inc/cub3d.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+void	ft_putendl_fd(char *s, int fd)
 {
-    t_game  game;
-    
-    if (!handle_validation(argc, argv, &game))
-        return(1);
-    return (0);
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }
+
+// int	main(void)
+// {
+// 	ft_putendl_fd("Drellions", 1);
+// 	return (0);
+// }

@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 13:27:01 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/03 15:13:44 by doduwole         ###   ########.fr       */
+/*   Created: 2022/12/14 14:38:42 by doduwole          #+#    #+#             */
+/*   Updated: 2023/01/18 15:58:34 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./inc/cub3d.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+int	ft_isprint( int c )
 {
-    t_game  game;
-    
-    if (!handle_validation(argc, argv, &game))
-        return(1);
-    return (0);
+	if (c >= 32 && c < 127)
+		return (1);
+	return (0);
 }
+
+// int	main(void)
+// {
+// 	int i = 123;
+//     while (i <= 127)
+//     {
+// 		printf("%i", ft_isprint(i));
+//         i++;
+//     }
+// 	return (0);
+// }

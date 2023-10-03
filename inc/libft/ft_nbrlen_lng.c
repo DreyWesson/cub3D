@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_nbrlen_lng.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 13:27:01 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/03 15:13:44 by doduwole         ###   ########.fr       */
+/*   Created: 2023/02/02 11:08:54 by doduwole          #+#    #+#             */
+/*   Updated: 2023/02/08 09:10:09 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./inc/cub3d.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+int	ft_nbrlen_lng(unsigned long n)
 {
-    t_game  game;
-    
-    if (!handle_validation(argc, argv, &game))
-        return(1);
-    return (0);
+	int	i;
+
+	i = 0;
+	if (n <= 0)
+		i = 1;
+	while (n)
+	{
+		n /= 16;
+		++i;
+	}
+	return (i);
 }

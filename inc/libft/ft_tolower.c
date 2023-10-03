@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 13:27:01 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/03 15:13:44 by doduwole         ###   ########.fr       */
+/*   Created: 2022/12/12 17:14:51 by doduwole          #+#    #+#             */
+/*   Updated: 2023/01/13 09:06:10 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./inc/cub3d.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+int	ft_tolower(int c)
 {
-    t_game  game;
-    
-    if (!handle_validation(argc, argv, &game))
-        return(1);
-    return (0);
+	if (c >= 65 && c <= 90)
+		c += 32;
+	return (c);
 }
+
+// int	main(void)
+// {
+// 	printf("%c", ft_tolower('A'));
+// 	return (0);
+// }

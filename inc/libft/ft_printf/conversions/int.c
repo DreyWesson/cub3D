@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   int.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 13:27:01 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/03 15:13:44 by doduwole         ###   ########.fr       */
+/*   Created: 2023/01/26 13:02:20 by doduwole          #+#    #+#             */
+/*   Updated: 2023/04/24 23:51:15 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./inc/cub3d.h"
+#include "../../libft.h"
 
-int main(int argc, char **argv)
+int	convert_int(va_list *args)
 {
-    t_game  game;
-    
-    if (!handle_validation(argc, argv, &game))
-        return(1);
-    return (0);
+	int			val;
+	int			ret;
+	const char	*ptr;
+
+	ret = 0;
+	val = va_arg(*args, int);
+	ptr = (const char *)ft_itoa(val);
+	ret += ft_putstr((char *)ptr);
+	free((void *)ptr);
+	return (ret);
 }
