@@ -5,15 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 12:05:33 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/03 12:53:41 by doduwole         ###   ########.fr       */
+/*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
+/*   Updated: 2023/10/05 12:34:25 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef CUB3D_H
+# define CUB3D_H
 
 // MLX_LIB
 # ifdef __APPLE__
@@ -28,142 +26,150 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
-# ifdef __APPLE__
-#  define A 0
-#  define S 1
-#  define D 2
-#  define W 13
-#  define R 15
-#  define X 53
-# else
-#  define A 97
-#  define S 115
-#  define D 100
-#  define W 119
-#  define R 15
-#  define X 65307
-# endif
+/**
+ * START
+*/
+# include <math.h>
 
-# define IMG_SIZE 64
+// KEYS //
+# define W 13
+# define S 1
+# define A 0
+# define D 2
+# define ESC 53
+# define UP 126
+# define DOWN 125
+# define LEFT 123
+# define RIGHT 124
+# define EXIT 69
 
-enum	e_pos
+// MACROS ERMAL
+# define TRUE 1
+# define FALSE 0
+# define WIN_WIDTH 1024
+# define WIN_HEIGHT 768
+# define PI M_PI // neeeded for rotation
+# define ROTATE_SPEED 0.05
+# define PLAYER_SPEED 5
+# define FOV 1.0471975512 //Field of View -> 60° (common first-person games) in radian, check later if 90° is better
+# define MINI_M 30 //size Minimap
+# define MINI_S 6 // scale Minimap
+# define VIEW_RANGE 1// more visible at greater distance the higher view_range is -> fog effect
+
+// ERMAL STRUCTS //
+
+typedef struct s_img
 {
-	NORTH = 'N',
-	SOUTH = 'S',
-	EAST = 'E',
-	WEST = 'W'
-} t_pos;
+	unsigned int	*img;
+	int				*addr;
+	int				bits_per_pixel;
+	int				line_length;
+	int				height;
+	int				width;
+	int				endian;
+	int				img_loaded;
+}				t_img;
 
-typedef enum e_tiletype
+typedef struct s_sprite
 {
-	EMPTY = '0',
-	WALL = '1',
-	// PLAYER_POS = t_pos,
+	int				x; // location of the sprite x & y
+	int				y;
+	int				distance; // knowing the distance you can render the sprites size correctly
+	t_img			*north; // important cause every side has it's own texture therefore the img_pointer
+	t_img			*south;
+	t_img			*west;
+	t_img			*east;
+}				t_sprite;
 
-}	t_tiletype;
-
-typedef enum e_compass
+typedef struct minimap
 {
-	UP = 'U',
-	DOWN = 'D',
-	LEFT = 'L',
-	RIGHT = 'R'
-}	t_compass;
+	int					p_pos_box;
+	int					box;
+}				t_minimap;
 
-typedef struct s_axis
+typedef struct s_player
 {
-	int	x;
-	int	y;
-}	t_axis;
+	void			*p_img;// img_pointer
+	int				width;// width & height important rendering on minimap and for collision detection
+	int				height;
+	double			x;// player pos x & y, important to check for movement
+	double			y;
+	int				turn_direction;// determine which direction to update the players pos. -> are flags
+	int				walk_direction;
+	int				rotation_direction;
+	double			angle;
+	char			cardinal_dir;//view // N, E, S, W
 
-/* Color */
-typedef struct s_color
-{
-	int	r;
-	int	g;
-	int	b;
-	int	a;
-}	t_color;
-
-typedef struct s_cell
-{
-	char			val;
-	int				x_axis;
-	int				y_axis;
-	char			status;
-	t_tiletype		type;
-	t_tiletype		cache;
-	t_axis			position;
-	struct s_cell	*up;
-	struct s_cell	*down;
-	struct s_cell	*left;
-	struct s_cell	*right;
-}	t_cell;
-
-typedef struct s_nodes
-{
-	t_cell			*cell;
-	struct s_nodes	*next;
-	struct s_nodes	*prev;
-}	t_nodes;
-
-typedef struct s_tile
-{
-	t_axis			position;
-	t_tiletype		type;
-	t_tiletype		mem_type;
-	struct s_tile	*up;
-	struct s_tile	*down;
-	struct s_tile	*left;
-	struct s_tile	*right;
-}	t_tile;
-
-enum e_keycode
-{
-	KEY_UP = W,
-	KEY_DOWN = S,
-	KEY_LEFT = A,
-	KEY_RIGHT = D,
-	RESET = R,
-	ESC = X
-};
+}				t_player;
 
 typedef struct s_game
 {
-	void			*mlx;
-	void			*window;
-	int				collects;
-	int				moves;
-	void			*door_open_img;
-	void			*door_close_img;;
-	t_cell			**grid;
-	t_axis			window_size;
-	t_axis			img_size;
-	t_cell			current_cell;
-}	t_game;
+	char			**map;// map representatiton ---------------------------------------> important for you DRE!
+	int				map_height;
+	int				map_width;
+	char			*north;//important for walls cause every side has it's own texture therefore the img_pointer
+	char			*south;
+	char			*west;
+	char			*east;
+	int				floor_color; // RGB color for the floor
+	int				ceiling_color;// RGB color for the ceiling
+}				t_game;
+
+typedef struct s_distance // it's used for calculations
+{
+	double			x_ray_dis_wall;// distance to hit the wall
+	double			y_ray_dis_wall;
+	double			x_delta;
+	double			y_delta;
+	int				ray_len;// keep track of the number of steps the ray has taken or reached maximum len
+}				t_distance;
+
+typedef struct s_data
+{
+	int			box_size;
+	void		*mlx;
+	void		*win;
+	t_game		*game;
+	t_sprite	*sprite;
+	t_player	*player;
+	t_img		*img;//mini map
+	t_img		*img_game;//game
+	t_minimap	*minimap;
+	double		*rays_dist;//distance player until hit the wall
+	double		*rays_x;// intersection points with the wall
+	double		*rays_y;
+	double		*ray_angle;// angle of which ray was cast
+	int			*is_horizontal;//true or false -> true ray hit horizontal wall, flase ray hit vertical wall
+}				t_data;
 
 /**
- * UTILS FUNCTION
+ * END
 */
-int			ft_error(char *message);
-void		ft_warning(char *message);
-int			ft_trim(char const *s1, char const *set);
-int			handle_validation(int argc, char **argv, t_game *game);
+
+typedef struct s_compass
+{
+    int n;
+    int s;
+    int e;
+    int w;
+} t_compass;
+
+int     handle_validation(int argc, char **argv, t_game *game);
+int     ft_error(char *message);
+void    ft_warning(char *message);
+int	validate_arg(int argc, char **argv);
+int	handle_map(char **argv, t_game *game);
+size_t	ft_strlen_ln(const char *str);
+int	line_counter(char *file_name);
+void	check_fd(int fd);
+void	print_grid(char **map, int row_nbr);
+void	ft_free2d(char **ptr);
+void	free_exit(char **map);
+
+
 /**
- * MAP -> Reader
+ * ERMAL
 */
-int			handle_map(char **argv, t_game *game);
-t_cell		**validate_map(char **map, t_nodes **queue);
-int			line_counter(char *file_name);
-size_t		ft_strlen_ln(const char *str);
-char		**map_reader(char *s, int row_nbr);
-/**
- * MAP -> Validator
-*/
-int			is_valid(char *str);
-int			validate_composition(char s);
-int			validate_walls(char *s, int row_nbr, int j, int i);
-// void		save_start(int x, int y, t_details *details);
 
 
 #endif
