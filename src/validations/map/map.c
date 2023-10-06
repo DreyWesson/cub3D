@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:07:25 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/03 15:15:09 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/06 20:37:15 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,11 +105,10 @@ void validate_map(char **map, int row_nbr)
 	}
 }
 
-int	handle_map(char **argv, t_game *game)
+int	handle_map(char **argv)
 {
 	char		**ptr;
-	int row_nbr;
-    (void)game;
+	int			row_nbr;
 
 	row_nbr = line_counter(argv[1]);
 	ptr = map_reader(argv[1], row_nbr);

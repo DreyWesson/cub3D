@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/05 12:34:25 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/06 20:31:15 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,18 +154,18 @@ typedef struct s_compass
     int w;
 } t_compass;
 
-int     handle_validation(int argc, char **argv, t_game *game);
+int     handle_validation(int argc, char **argv);
 int     ft_error(char *message);
 void    ft_warning(char *message);
 int	validate_arg(int argc, char **argv);
-int	handle_map(char **argv, t_game *game);
+int	handle_map(char **argv);
 size_t	ft_strlen_ln(const char *str);
 int	line_counter(char *file_name);
 void	check_fd(int fd);
 void	print_grid(char **map, int row_nbr);
 void	ft_free2d(char **ptr);
 void	free_exit(char **map);
-
+int	is_valid(char *str);
 
 /**
  * ERMAL
