@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/06 20:31:15 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/09 16:48:08 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,6 +167,7 @@ void	ft_free2d(char **ptr);
 void	free_exit(char **map);
 int	is_valid(char *str);
 
+void	clean_exit(t_dt *data, int exitstatus);
 /**
  * ERMAL
 */

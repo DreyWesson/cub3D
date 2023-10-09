@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:07:25 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/06 20:37:15 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/09 16:43:50 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ char	**map_reader(char *s, int row_nbr)
 	while (i < row_nbr)
 	{
 		str = get_next_line(fd);
+		printf("%s",str);
+
 		len = ft_strlen_ln(str);
 		ptr[i] = ft_substr(str, 0, len);
 		ptr[i][len] = '\0';
