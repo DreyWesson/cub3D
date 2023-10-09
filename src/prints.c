@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:13:02 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/03 15:13:14 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/09 15:43:56 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,31 @@ void	print_grid(char **map, int row_nbr)
 	{
 		printf("%s\n", map[y]);
 		y++;
+	}
+}
+
+void	print_array_2d(char **array_2d)
+{
+	int	i;
+
+	i = 0;
+	while (array_2d[i])
+	{
+		printf("%s", array_2d[i]);
+		i++;
+	}
+}
+
+void	print_array_2d_newline(char **array_2d)
+{
+	int	i;
+
+	i = 0;
+	while (array_2d[i])
+	{
+		printf("line idx %d\n", i);
+		printf("%s", array_2d[i]);
+		printf("\n");
+		i++;
 	}
 }

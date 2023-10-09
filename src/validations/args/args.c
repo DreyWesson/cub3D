@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:54:45 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/03 15:09:51 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:21:56 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	ft_trim(char const *s1, char const *set)
 	return (start);
 }
 
-int	is_valid(char *str)
+int	is_valid_cub(char *str)
 {
 	char	*s;
 	int		len;
@@ -71,13 +71,13 @@ int	is_valid(char *str)
 	return (res);
 }
 
-int	validate_arg(int argc, char **argv)
-{
-	if (argc == 1)
-		return (ft_error("Too few argument"));
-	if (argc > 2)
-		return (ft_error("Too many argument"));
-	if (!is_valid(argv[1]))
-		return (ft_error("Expecting a .cub file"));
-	return (1);
-}
+// int	validate_arg(int argc, char **argv)
+// {
+// 	if (argc == 1)
+// 		return (ft_error("Too few argument"));
+// 	if (argc > 2)
+// 		return (ft_error("Too many argument"));
+// 	if (!is_valid(argv[1]))
+// 		return (ft_error("Expecting a .cub file"));
+// 	return (1);
+// }
