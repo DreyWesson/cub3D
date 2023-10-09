@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:14:43 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/03 15:15:28 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/09 15:02:50 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	line_counter(char *file_name)
 		free(line);
 		line = get_next_line(fd);
 	}
+	close(fd);
 	return (i);
 }
 
