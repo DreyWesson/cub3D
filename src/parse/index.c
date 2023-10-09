@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 14:15:02 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/09 16:34:19 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/09 17:19:01 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	parsing(t_dt *data, char **argv)
     (void)data;
 	if (!is_valid_cub(argv[1]))
 		return (ft_error("Expecting a .cub file"));
-    // map_reader(argv[1], data);
     handle_map(argv[1], data);
-
+	if (retrieve_file_data(data, data->cub_file) == FAILURE)
+		return (FAILURE);
 	// cub_file = data->cub_file;
 	// if (retrieve_file_data(data, cub_file) == FAILURE)
 	// 	return (FAILURE);

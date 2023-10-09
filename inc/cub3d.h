@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/09 16:59:31 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/09 18:52:19 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <stdbool.h>
 
 /**
  * START
@@ -232,8 +233,8 @@ void	ft_err(char *message);
 int	is_valid_cub(char *str);
 int	parsing(t_dt *data, char **argv);
 void handle_map(char *cub_path, t_dt *data);
-// void	map_reader(char *cub_path, t_dt *data);
 void	map_reader(t_dt *data);
+int	retrieve_file_data(t_dt *data, char **cub_file);
 /**
  * FREE
 */
@@ -249,9 +250,12 @@ void	clean_exit(t_dt *data, int exitstatus);
  * PRINTS
 */
 void	print_array_2d(char **array_2d);
+bool none_num(char c);
+bool contiguous_alpha(char c1, char c2);
+bool	ft_isspace(char c);
+bool	ft_isprint_no_space(int c);
 /**
  * ERMAL
 */
-
 
 #endif

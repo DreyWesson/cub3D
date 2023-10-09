@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:07:25 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/09 17:00:28 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/09 17:28:40 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,15 @@ void	map_reader(t_dt *data)
 		data->cub_file[row++][col] = '\0';
 		col = 0;
 		i = 0;
-		printf("%s", line);
 		free(line);
 		line = get_next_line(data->cub_fd);
 	}
 	data->cub_file[row] = NULL;
+	close(data->cub_fd);
 }
 
 void	handle_map(char *cub_path, t_dt *data)
 {
 	init_map(cub_path, data);
 	map_reader(data);
-	close(data->cub_fd);
 }
