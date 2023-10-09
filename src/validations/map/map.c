@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:07:25 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/09 17:28:40 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/09 22:03:51 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,6 @@ int	open_file(char *filepath, t_dt *data)
 
 void	init_map(char *cub_path, t_dt *data)
 {
-	int		i;
-	int		col;
-	int		row;
-
-	row = 0;
-	col = 0;
-	i = 0;
 	data->cub_height = line_counter(cub_path);
 	data->cub_file = ft_calloc(sizeof(char *), data->cub_height + 1);
 	data->cub_path = cub_path;
@@ -55,8 +48,7 @@ void	map_reader(t_dt *data)
 	line = get_next_line(data->cub_fd);
 	while (line != NULL)
 	{
-		data->cub_file[row]
-			= ft_calloc(ft_strlen(line) + 1, sizeof(char));
+		data->cub_file[row] = ft_calloc(ft_strlen(line) + 1, sizeof(char));
 		if (!data->cub_file[row])
 			return (ft_error("Malloc failed"), clean_exit(data, FAILURE));
 		while (line[i] != '\0')
