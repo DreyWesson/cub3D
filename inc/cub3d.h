@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/10 16:23:39 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/10 19:22:15 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,16 @@ enum				e_status
 	TEXTURE_ADDED = 1
 };
 
+typedef struct s_dfs
+{
+	char			**map;
+	int				h;
+	int				w;
+	int				valid;
+	int				dr[4];
+	int				dc[4];
+}					t_dfs;
+
 typedef struct s_dt
 {
 	// ------- saved .cub file -------
@@ -269,7 +279,12 @@ bool				ft_isspace(char c);
 bool				ft_isprint_no_space(int c);
 int					set_textures(t_dt *data, char *line, int j);
 int					add_colors(t_dt *data, char *line, int j);
-
+size_t				ft_strlen_no_newline(const char *str);
+size_t				find_max_width(t_dt *data, int i);
+int					add_map(t_dt *data, char **cub_file, int i);
+int					is_last_char_one(const char *line);
+int					dfs(t_dt *data, char **map_clone);
+int					validate_walls(t_dt *data);
 /**
  * ERMAL
  */

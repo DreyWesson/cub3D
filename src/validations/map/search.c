@@ -1,0 +1,78 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   search.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/10 19:17:55 by doduwole          #+#    #+#             */
+/*   Updated: 2023/10/10 19:21:03 by doduwole         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../../inc/cub3d.h"
+
+void	init_mapdata(t_dfs *map_data, t_dt *data, char **map_clone)
+{
+	map_data->map = map_clone;
+	map_data->h = data->map_height;
+	map_data->w = data->map_width;
+	map_data->valid = 1;
+	map_data->dr[0] = -1;
+	map_data->dr[1] = 0;
+	map_data->dr[2] = 1;
+	map_data->dr[3] = 0;
+	map_data->dc[0] = 0;
+	map_data->dc[1] = 1;
+	map_data->dc[2] = 0;
+	map_data->dc[3] = -1;
+}
+/*
+performs depth-first search on the map from a given starting point
+checks whether a given point is within the map and whether it's traversable.
+If a point is outside the map or not traversable,
+the map is marked as invalid.
+
+two integers (r and c) representing current position in the map
+*/
+void	dfs_recursive(t_dfs *map_data, int r, int c)
+{
+	int	i;
+
+	if (r < 0 || c < 0 || r >= map_data->h || c >= map_data->w)
+	{
+		map_data->valid = 0;
+		return ;
+	}
+	if (map_data->map[r][c] == '1' || map_data->map[r][c] == '.')
+		return ;
+	map_data->map[r][c] = '.';
+	i = -1;
+	while (++i < 4)
+		dfs_recursive(map_data, r + map_data->dr[i], c + map_data->dc[i]);
+}
+
+/*
+runs the depth-first search algorithm on every valid starting point on the map.
+if any of the searches result in an invalid map,
+it stops the search and returns 0
+*/
+int	dfs(t_dt *data, char **map_clone)
+{
+	t_dfs map_data;
+	int i;
+	int j;
+
+	init_mapdata(&map_data, data, map_clone);
+	i = -1;
+	while (++i < map_data.h)
+	{
+		j = -1;
+		while (++j < map_data.w)
+			if (map_data.map[i][j] == '0' || map_data.map[i][j] == 'N'
+				|| map_data.map[i][j] == 'E' || map_data.map[i][j] == 'W'
+				|| map_data.map[i][j] == 'S')
+				dfs_recursive(&map_data, i, j);
+	}
+	return (map_data.valid);
+}

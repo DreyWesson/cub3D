@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:22:39 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/10 16:22:11 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/10 19:06:16 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ static int	handle_extraction(t_dt *data, char **cub_file, int i, int j)
 		{
 			if (set_textures(data, cub_file[i], j) == FAILURE)
 				return (FAILURE);
-			// return (TEXTURE_ADDED);
 		}
 		else
 		{
@@ -79,8 +78,8 @@ static int	handle_extraction(t_dt *data, char **cub_file, int i, int j)
 	}
 	else if (ft_isdigit(cub_file[i][j]))
 	{
-		// if (add_map(data, cub_file, i) == FAILURE)
-		// 	return (FAILURE);
+		if (add_map(data, cub_file, i) == FAILURE)
+			return (FAILURE);
 		return (SUCCESS);
 	}
 	return (42);
