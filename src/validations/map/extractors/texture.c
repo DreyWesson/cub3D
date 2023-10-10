@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:52:22 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/10 16:00:00 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/10 16:10:07 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static char	*add_tex_path(char *line, int j)
 	while (line[j] && (!ft_isspace(line[j]) && line[j] != '\n'))
 		path[i++] = line[j++];
 	path[i] = '\0';
-	printf("%s", path);
 	while (line[j] && (ft_isspace(line[j])))
 		j++;
 	if (line[j] && line[j] != '\n')

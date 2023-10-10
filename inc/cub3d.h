@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/10 15:57:59 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/10 16:23:39 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -254,6 +254,7 @@ void				free_data(t_dt *data);
 void				free_colors(t_dt *data);
 void				free_textures(t_dt *data);
 void				free_cub(t_dt *data);
+void				free_array_2d(void **array_2d);
 /**
  * EXIT
  */
@@ -267,6 +268,8 @@ bool				is_texture(char c1, char c2);
 bool				ft_isspace(char c);
 bool				ft_isprint_no_space(int c);
 int					set_textures(t_dt *data, char *line, int j);
+int					add_colors(t_dt *data, char *line, int j);
+
 /**
  * ERMAL
  */

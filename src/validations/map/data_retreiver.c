@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:22:39 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/10 16:02:18 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/10 16:22:11 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@
 
 static int	handle_extraction(t_dt *data, char **cub_file, int i, int j)
 {
-	(void)data;
 	while (ft_isspace(cub_file[i][j]) || cub_file[i][j] == '\n')
 		j++;
 	if (is_texture_or_color(cub_file[i][j]))
@@ -69,16 +68,14 @@ static int	handle_extraction(t_dt *data, char **cub_file, int i, int j)
 		{
 			if (set_textures(data, cub_file[i], j) == FAILURE)
 				return (FAILURE);
-			return (TEXTURE_ADDED);
+			// return (TEXTURE_ADDED);
 		}
 		else
 		{
-			// if (DEBUG)
-			// 	printf("%c\n", cub_file[i][j]);
-			// if (add_colors(data, cub_file[i], j) == FAILURE)
-			// 	return (FAILURE);
-			return (TEXTURE_ADDED);
+			if (add_colors(data, cub_file[i], j) == FAILURE)
+				return (FAILURE);
 		}
+		return (TEXTURE_ADDED);
 	}
 	else if (ft_isdigit(cub_file[i][j]))
 	{
