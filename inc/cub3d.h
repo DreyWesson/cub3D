@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/10 20:38:38 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/10 20:44:24 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -286,6 +286,7 @@ int					is_last_char_one(const char *line);
 int					dfs(t_dt *data, char **map_clone);
 int					validate_walls(t_dt *data);
 void				make_map_rectangular(t_dt *data);
+void				print_array_2d_newline(char **array_2d);
 /**
  * ERMAL
  */

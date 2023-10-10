@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:53:04 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/10 19:12:39 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/10 20:50:17 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,6 @@ int	add_map(t_dt *data, char **cub_file, int i)
 	}
 	if (validate_walls(data) == FAILURE)
 		return (ft_error("Map: Should be surrounded by walls"), FAILURE);
-	// make_map_rectangular(data);
+	make_map_rectangular(data);
 	return (SUCCESS);
 }
