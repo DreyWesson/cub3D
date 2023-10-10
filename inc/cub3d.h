@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/10 19:22:15 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/10 20:38:38 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -243,7 +243,7 @@ void				check_fd(int fd);
 void				print_grid(char **map, int row_nbr);
 void				ft_free2d(char **ptr);
 void				free_exit(char **map);
-void				init_map_data(t_dt *data);
+void				init_data2(t_dt *data);
 /**
  * ERROR
  */
@@ -285,6 +285,7 @@ int					add_map(t_dt *data, char **cub_file, int i);
 int					is_last_char_one(const char *line);
 int					dfs(t_dt *data, char **map_clone);
 int					validate_walls(t_dt *data);
+void				make_map_rectangular(t_dt *data);
 /**
  * ERMAL
  */

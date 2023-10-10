@@ -6,13 +6,38 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 19:17:55 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/10 19:21:03 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/10 20:30:53 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/cub3d.h"
 
-void	init_mapdata(t_dfs *map_data, t_dt *data, char **map_clone)
+/*
+dr: "delta row"
+used to determine the row index for the next cell to visit during DFS,
+each value represents a move in the vertical direction (up or down),
+values are set to -1, 0, 1, 0 to represent:
+	moving up,
+	(no vertical movement),
+	moving down,
+	(no vertical movement)
+
+dc: "delta column"
+used to determine the column index for the next cell to visit during DFS,
+each value represents a move in the horizontal direction (left or right),
+values are set to 0, 1, 0, -1 to represent
+	(no horizontal movement),
+	moving right,
+	(no horizontal movement),
+	moving left
+
+using these arrays in the dfs_recursive function,
+loop through them to check all four possible directions from the current cell.
+example: r + map_data->dr[i] and c + map_data->dc[i] gives us the indices of
+the cell in the direction specified by i from the current cell (r, c)
+*/
+
+void	init_map_data(t_dfs *map_data, t_dt *data, char **map_clone)
 {
 	map_data->map = map_clone;
 	map_data->h = data->map_height;
@@ -27,6 +52,7 @@ void	init_mapdata(t_dfs *map_data, t_dt *data, char **map_clone)
 	map_data->dc[2] = 0;
 	map_data->dc[3] = -1;
 }
+
 /*
 performs depth-first search on the map from a given starting point
 checks whether a given point is within the map and whether it's traversable.
@@ -63,7 +89,7 @@ int	dfs(t_dt *data, char **map_clone)
 	int i;
 	int j;
 
-	init_mapdata(&map_data, data, map_clone);
+	init_map_data(&map_data, data, map_clone);
 	i = -1;
 	while (++i < map_data.h)
 	{
