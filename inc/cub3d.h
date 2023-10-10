@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/10 21:33:42 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/10 21:47:00 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,51 +175,41 @@ typedef struct s_dfs
 typedef struct s_dt
 {
 	// ------- saved .cub file -------
-	char **cub_file; // s_mapinfo mapinfo.file
-	char *cub_path;  // s_mapinfo mapinfo.path
-	int cub_height;  // s_mapinfo mapinfo.line_count
-	int cub_fd;      // s_mapinfo mapinfo.fd
+	char			**cub_file;
+	char			*cub_path;
+	int				cub_height;
+	int				cub_fd;
+
+	//  ****** rectangular map *******
+	char			**map;
+	int				map_height;
+	int				map_width;
+	int				map_end_idx;
 
 	// ------- path to texture -------
-	char *tex_north; // s_texinfo textures.north
-	char *tex_east;  // s_texinfo textures.east
-	char *tex_south; // s_texinfo textures.south
-	char *tex_west;  // s_texinfo textures.west
+	char			*tex_north;
+	char			*tex_east;
+	char			*tex_south;
+	char			*tex_west;
 
-	// ------- array of 3 rgb int's -------
+	// ------- color related data -------
 	int				*col_ceiling;
-	// ------- array of 3 rgb int's --------
 	int				*col_floor;
-	// ------- result calculated from 3 rgb values -------
-	int col_ceiling_int; // textures.hex_floor
-							// - SIC! we can use INT instead of unsigned long,
-							// but SHOULD WE??
-	// ------- result calculated from 3 rgb values -------
-	int col_floor_int; // textures.hex_floor
+	int				col_ceiling_int;
+	int				col_floor_int;
 
-	// ----- 2D map, modified so it becomes rectangulat --------
-	char **map;      // data.map
-	int map_height;  // s_mapinfo mapinfo.height
-	int map_width;   // s_mapinfo mapinfo.width
-	int map_end_idx; // s_mapinfo mapinfo.index_end_of_map;
-
-	// NEWS => direction player is lookig
-	char player_dir; // data->player.dir
-	// idx of player on a **map
-	int player_x; // IDK, i guess she used it only temporary
-	// idx of player on a **map
+	int				player_x;
 	int				player_y;
-	// ------- +0.5 to get REAL position on a grid -------
-	double player_pos_x; // data->player.pos_x
-	// ------- +0.5 to get REAL position on a grid -------
-	double player_pos_y;   // data->player.pos_x
-	double player_dir_x;   // data->player.dir_x
-	double player_dir_y;   // data->player.dir_y
-	double player_plane_x; // data->player.plane_x
-	double player_plane_y; // data->player.plane_y
+	double			player_pos_x;
+	double			player_pos_y;
+	char			player_dir;
+	double			player_dir_x;
+	double			player_dir_y;
+	double			player_plane_x;
+	double			player_plane_y;
 
-	void *mlx_ptr; // void *mlx
-	void *mlx_win; // void *win
+	void			*mlx_ptr;
+	void			*mlx_win;
 }					t_dt;
 
 /**
@@ -234,7 +224,7 @@ typedef struct s_compass
 	int				w;
 }					t_compass;
 
-int					handle_validation(int argc, char **argv);
+// int					handle_validation(int argc, char **argv);
 // int					validate_arg(int argc, char **argv);
 // int	handle_map(char **argv);
 size_t				ft_strlen_ln(const char *str);
@@ -242,7 +232,7 @@ int					line_counter(char *file_name);
 void				check_fd(int fd);
 void				print_grid(char **map, int row_nbr);
 void				ft_free2d(char **ptr);
-void				free_exit(char **map);
+// void				free_exit(char **map);
 void				init_data2(t_dt *data);
 /**
  * ERROR
