@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/10 21:30:19 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/10 21:33:42 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -289,6 +289,7 @@ void				make_map_rectangular(t_dt *data);
 void				print_array_2d_newline(char **array_2d);
 int					validate_map(t_dt *data, char **map);
 int					validate_textures(t_dt *data);
+void				add_player_direction(t_dt *data);
 /**
  * ERMAL
  */
