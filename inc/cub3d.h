@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/10 20:44:24 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/10 21:30:19 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -235,7 +235,7 @@ typedef struct s_compass
 }					t_compass;
 
 int					handle_validation(int argc, char **argv);
-int					validate_arg(int argc, char **argv);
+// int					validate_arg(int argc, char **argv);
 // int	handle_map(char **argv);
 size_t				ft_strlen_ln(const char *str);
 int					line_counter(char *file_name);
@@ -287,6 +287,8 @@ int					dfs(t_dt *data, char **map_clone);
 int					validate_walls(t_dt *data);
 void				make_map_rectangular(t_dt *data);
 void				print_array_2d_newline(char **array_2d);
+int					validate_map(t_dt *data, char **map);
+int					validate_textures(t_dt *data);
 /**
  * ERMAL
  */

@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 14:15:02 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/10 20:51:48 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/10 21:30:12 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ int	parsing(t_dt *data, char **argv)
 		printf("West: %s\n", data->tex_west);
 		printf("East: %s\n", data->tex_east);
 	}
-	// if (validate_map(data, data->map) == FAILURE)
-	// 	return (FAILURE);
-	// if (validate_textures(data) == FAILURE)
-	// 	return (FAILURE);
+	if (validate_map(data, data->map) == FAILURE)
+		return (FAILURE);
+	if (validate_textures(data) == FAILURE)
+		return (FAILURE);
 	// add_player_direction(data);
 	return (SUCCESS);
 }
