@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/10 21:47:00 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/10 22:36:31 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
  * START
  */
 # include <math.h>
+
+# define DEBUG 1
 
 // KEYS //
 # define W 13
@@ -59,8 +61,6 @@
 # define MINI_S 6  // scale Minimap
 # define VIEW_RANGE 1
 // more visible at greater distance the higher view_range is -> fog effect
-
-# define DEBUG 1
 
 // ERMAL STRUCTS //
 
@@ -213,75 +213,53 @@ typedef struct s_dt
 }					t_dt;
 
 /**
- * END
+ * ******** PARSING ************
  */
-
-typedef struct s_compass
-{
-	int				n;
-	int				s;
-	int				e;
-	int				w;
-}					t_compass;
-
-// int					handle_validation(int argc, char **argv);
-// int					validate_arg(int argc, char **argv);
-// int	handle_map(char **argv);
-size_t				ft_strlen_ln(const char *str);
-int					line_counter(char *file_name);
+int					parsing(t_dt *data, char **argv);
+// ***** Validations *******
+int					is_valid_cub(char *str);
+int					validate_map(t_dt *data, char **map);
+int					validate_textures(t_dt *data);
+int					validate_walls(t_dt *data);
+// ******** Utils *********
+void				clean_exit(t_dt *data, int exitstatus);
 void				check_fd(int fd);
-void				print_grid(char **map, int row_nbr);
-void				ft_free2d(char **ptr);
-// void				free_exit(char **map);
-void				init_data2(t_dt *data);
-/**
- * ERROR
- */
+int					line_counter(char *file_name);
+size_t				ft_strlen_ln(const char *str);
+size_t				ft_strlen_no_newline(const char *str);
+size_t				find_max_width(t_dt *data, int i);
+bool				ft_isspace(char c);
+bool				ft_isprint_no_space(int c);
+bool				is_texture_or_color(char c);
+bool				is_texture(char c1, char c2);
+int					is_last_char_one(const char *line);
+// ******** Prints *********
 int					ft_error(char *message);
 void				ft_err(char *message);
-/**
- * PARSING
- */
-int					is_valid_cub(char *str);
-int					parsing(t_dt *data, char **argv);
-void				handle_map(char *cub_path, t_dt *data);
-void				map_reader(t_dt *data);
-int					retrieve_file_data(t_dt *data, char **cub_file);
-/**
- * FREE
- */
+void				print_grid(char **map, int row_nbr);
+void				print_array_2d(char **array_2d);
+void				print_array_2d_newline(char **array_2d);
+// ******** Free *********
+void				ft_free2d(char **ptr);
 void				free_data(t_dt *data);
 void				free_colors(t_dt *data);
 void				free_textures(t_dt *data);
 void				free_cub(t_dt *data);
 void				free_array_2d(void **array_2d);
-/**
- * EXIT
- */
-void				clean_exit(t_dt *data, int exitstatus);
-/**
- * PRINTS
- */
-void				print_array_2d(char **array_2d);
-bool				is_texture_or_color(char c);
-bool				is_texture(char c1, char c2);
-bool				ft_isspace(char c);
-bool				ft_isprint_no_space(int c);
+// **** player dir *****
+void				add_player_direction(t_dt *data);
+// ****** Map file *******
+void				handle_map(char *cub_path, t_dt *data);
+void				map_reader(t_dt *data);
+void				make_map_rectangular(t_dt *data);
+// ****** Search *******
+int					dfs(t_dt *data, char **map_clone);
+// ****** init_data2 *******
+void				init_data2(t_dt *data);
+// ****** extractions *******
+int					retrieve_file_data(t_dt *data, char **cub_file);
 int					set_textures(t_dt *data, char *line, int j);
 int					add_colors(t_dt *data, char *line, int j);
-size_t				ft_strlen_no_newline(const char *str);
-size_t				find_max_width(t_dt *data, int i);
 int					add_map(t_dt *data, char **cub_file, int i);
-int					is_last_char_one(const char *line);
-int					dfs(t_dt *data, char **map_clone);
-int					validate_walls(t_dt *data);
-void				make_map_rectangular(t_dt *data);
-void				print_array_2d_newline(char **array_2d);
-int					validate_map(t_dt *data, char **map);
-int					validate_textures(t_dt *data);
-void				add_player_direction(t_dt *data);
-/**
- * ERMAL
- */
 
 #endif
