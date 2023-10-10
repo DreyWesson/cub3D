@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/09 22:18:57 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:57:59 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -266,6 +266,7 @@ bool				is_texture_or_color(char c);
 bool				is_texture(char c1, char c2);
 bool				ft_isspace(char c);
 bool				ft_isprint_no_space(int c);
+int					set_textures(t_dt *data, char *line, int j);
 /**
  * ERMAL
  */
