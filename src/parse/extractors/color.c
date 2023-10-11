@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 16:06:07 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/10 22:19:26 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/11 18:36:30 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	*convert_and_add_rgb(char **rgb_to_convert, int *rgb)
 	while (rgb_to_convert[++i])
 	{
 		rgb[i] = ft_atoi(rgb_to_convert[i]);
-		if (rgb[i] == -1 || no_digit_found(rgb_to_convert[i]))
+		if (rgb[i] == -1 || no_digit_found(rgb_to_convert[i]) || (rgb[i] < 0 || rgb[i] > 255))
 		{
 			free_array_2d((void **)rgb_to_convert);
 			free(rgb);

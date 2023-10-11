@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 21:25:55 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/11 11:05:21 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/11 18:40:00 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,19 @@ static unsigned long	rgb_to_int(int *rgb_arr)
 	return (((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff));
 }
 
-static int	validate_rgb(int *rgb)
-{
-	int	i;
+// static int	validate_rgb(int *rgb)
+// {
+// 	int	i;
 
-	i = 0;
-	while (i < 3)
-	{
-		if (rgb[i] < 0 || rgb[i] > 255)
-			return (ft_error("Color: Invalid RGB value"), FAILURE);
-		i++;
-	}
-	return (SUCCESS);
-}
+// 	i = 0;
+// 	while (i < 3)
+// 	{
+// 		if (rgb[i] < 0 || rgb[i] > 255)
+// 			return (ft_error("Color: Invalid RGB value"), FAILURE);
+// 		i++;
+// 	}
+// 	return (SUCCESS);
+// }
 
 int	check_xpm_file_extension(char *filename)
 {
@@ -75,13 +75,11 @@ int	validate_textures(t_dt *data)
 		|| validate_xpm_file(data->tex_east) == FAILURE
 		|| validate_xpm_file(data->tex_west) == FAILURE
 		|| validate_xpm_file(data->tex_south) == FAILURE
-		|| validate_rgb(data->col_floor) == FAILURE
-		|| validate_rgb(data->col_ceiling) == FAILURE)
+		// || validate_rgb(data->col_floor) == FAILURE
+		// || validate_rgb(data->col_ceiling) == FAILURE
+	)
 		return (FAILURE);
 	data->col_ceiling_int = rgb_to_int(data->col_ceiling);
 	data->col_floor_int = rgb_to_int(data->col_floor);
-	// if (DEBUG)
-	// 	printf("\nSaved color settings:\nceiling %d\nfloor %d\n\n",
-	// 		data->col_ceiling_int, data->col_floor_int);
 	return (SUCCESS);
 }

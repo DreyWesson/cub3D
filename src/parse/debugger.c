@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 11:07:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/11 15:00:11 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/11 17:17:03 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,27 @@ void player_data(t_dt *data)
 		printf("\n");
 }
 
+void color_data(int *data, char *str)
+{
+	printf("\033[1;33m""%s color data:\n""\033[0m", str);
+	int i;
+
+	i = 0;
+	while (i < 3)
+	{
+		printf("%d", data[i]);
+		if (i != 2)
+			printf(" ");
+		i++;
+	}
+	printf("\n");
+}
+
 void debugger(t_dt *data)
 {
     texture_data(data);
+	color_data(data->col_ceiling, "Ceiling");
+	color_data(data->col_floor, "Floor");
     print_map(data, "Rectangular map");
 	player_data(data);
 }

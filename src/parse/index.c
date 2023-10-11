@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 14:15:02 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/11 11:45:00 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/11 17:38:03 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	parsing(t_dt *data, char **argv)
 		debugger(data);
 	if (validate_map(data, data->map) == FAILURE)
 		return (FAILURE);
-	exit(1);
 	if (validate_textures(data) == FAILURE)
 		return (FAILURE);
+	exit(1);
 	add_player_direction(data);
 	return (SUCCESS);
 }
