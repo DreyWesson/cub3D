@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/11 14:52:23 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/11 18:53:47 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,7 +217,8 @@ typedef struct s_dt
  */
 int					parsing(t_dt *data, char **argv);
 // ***** Validations *******
-int					is_valid_cub(char *str);
+// int					is_valid_cub(char *str);
+int	is_valid_exe(char *str, char *exe);
 int					validate_map(t_dt *data, char **map);
 int					validate_textures(t_dt *data);
 int					validate_walls(t_dt *data);

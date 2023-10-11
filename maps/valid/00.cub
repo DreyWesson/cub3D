@@ -3,9 +3,9 @@
 
 
 							SO ./textures/south.xpm
-WE						 ./textures/west.xpm
+WE						 ./textures/west.xpl
 
-C 				229,           107, 1112
+C 				229,           107, 111
 EA ./textures/east.xpm
 
 F 100, 89, 124

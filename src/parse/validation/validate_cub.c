@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_cub.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:54:45 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/10 22:18:03 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/11 18:53:29 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	ft_trim(char const *s1, char const *set)
 	return (start);
 }
 
-int	is_valid_cub(char *str)
+int	is_valid_exe(char *str, char *exe)
 {
 	char	*s;
 	int		len;
@@ -59,7 +59,7 @@ int	is_valid_cub(char *str)
 		if (str[len] == '.')
 		{
 			s = ft_substr(&str[len], 0, 4);
-			if (ft_strncmp(s, ".cub", 4) == 0 && !str[len + 4])
+			if (ft_strncmp(s, exe, 4) == 0 && !str[len + 4])
 				res = 1;
 			else
 				break ;
