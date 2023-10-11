@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 11:21:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/11 11:23:44 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/11 14:57:14 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void print_map(t_dt *data, char *str)
 {
-		printf("\n%s:\n", str);
+		printf("\033[1;33m""\n%s:\n""\033[0m", str);
 		print_array_2d_newline(data->map);
 		printf("\n");    
 }
