@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate.c                                         :+:      :+:    :+:   */
+/*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 21:19:03 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/10 21:24:27 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/11 20:12:40 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ static int	add_player_position(t_dt *data, char **map)
 			{
 				data->player_x = j;
 				data->player_y = i;
-				data->player_pos_x = (double)j + 0.5;
-				data->player_pos_y = (double)i + 0.5;
 				map[i][j] = '0';
 			}
 			j++;

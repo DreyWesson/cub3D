@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/11 18:53:47 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/11 20:13:05 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,15 +198,9 @@ typedef struct s_dt
 	int				col_ceiling_int;
 	int				col_floor_int;
 
+	char			player_dir;
 	int				player_x;
 	int				player_y;
-	double			player_pos_x;
-	double			player_pos_y;
-	char			player_dir;
-	double			player_dir_x;
-	double			player_dir_y;
-	double			player_plane_x;
-	double			player_plane_y;
 
 	void			*mlx_ptr;
 	void			*mlx_win;
@@ -249,7 +243,7 @@ void				free_textures(t_dt *data);
 void				free_cub(t_dt *data);
 void				free_array_2d(void **array_2d);
 // **** player dir *****
-void				add_player_direction(t_dt *data);
+// void				add_player_direction(t_dt *data);
 // ****** Map file *******
 void				handle_map(char *cub_path, t_dt *data);
 void				map_reader(t_dt *data);

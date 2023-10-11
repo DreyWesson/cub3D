@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:54:45 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/11 18:53:29 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/11 19:20:04 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,18 @@ int	is_valid_exe(char *str, char *exe)
 	char	*s;
 	int		len;
 	int		res;
+	int		exe_len;
 
 	res = 0;
 	s = NULL;
 	len = ft_trim(str, "./");
+	exe_len = ft_strlen(exe);
 	while (str[len])
 	{
 		if (str[len] == '.')
 		{
-			s = ft_substr(&str[len], 0, 4);
-			if (ft_strncmp(s, exe, 4) == 0 && !str[len + 4])
+			s = ft_substr(&str[len], 0, exe_len);
+			if (ft_strncmp(s, exe, exe_len) == 0 && !str[len + exe_len])
 				res = 1;
 			else
 				break ;

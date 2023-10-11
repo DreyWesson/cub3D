@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 21:30:39 by eramusho          #+#    #+#             */
-/*   Updated: 2023/10/10 22:19:12 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/11 20:12:52 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,6 @@ void	init_data2(t_dt *data)
 	data->player_dir = 0;
 	data->player_x = 0;
 	data->player_y = 0;
-	data->player_pos_x = 0;
-	data->player_pos_y = 0;
-	data->player_dir_x = 0;
-	data->player_dir_y = 0;
-	data->player_plane_x = 0;
-	data->player_plane_y = 0;
 	data->mlx_ptr = NULL;
 	data->mlx_win = NULL;
 }
