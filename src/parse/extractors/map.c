@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:53:04 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/11 10:41:06 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/11 11:23:27 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ static int	map_to_2d(t_dt *data, char **map, int index)
 	int	j;
 
 	data->map_width = find_max_width(data, index);
-	if (DEBUG)
-		printf("Map max width: %d\n", data->map_width);
 	i = 0;
 	while (i < data->map_height)
 	{
@@ -94,26 +92,17 @@ static int	retrieve_map_data(t_dt *data, char **cub_file, int i)
 		return (ft_error("Malloc failed"), FAILURE);
 	if (map_to_2d(data, data->map, i) == FAILURE)
 		return (FAILURE);
+	if (DEBUG)
+		print_map(data, "Extracted Map");
 	// if (no_tabs(data) == FAILURE)
 	// 	return (FAILURE);
 	return (SUCCESS);
 }
 
-/* we should have check for walls here before we fill spaces with '1' */
 int	add_map(t_dt *data, char **cub_file, int i)
 {
-	int j;
-
 	if (retrieve_map_data(data, cub_file, i) == FAILURE)
 		return (FAILURE);
-	exit(1);
-	if (DEBUG)
-	{
-		printf("\nExtracted map:\n");
-		j = 0;
-		while (j < data->map_height)
-			printf("%s\n", data->map[j++]);
-	}
 	if (validate_walls(data) == FAILURE)
 		return (ft_error("Map: Should be surrounded by walls"), FAILURE);
 	make_map_rectangular(data);

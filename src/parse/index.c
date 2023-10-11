@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 14:15:02 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/10 22:17:02 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/11 11:09:32 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,8 @@ int	parsing(t_dt *data, char **argv)
 	if (retrieve_file_data(data, data->cub_file) == FAILURE)
 		return (FAILURE);
 	if (DEBUG)
-	{
-		printf("\nRectangular Map:\n");
-		print_array_2d_newline(data->map);
-		printf("\n");
-		printf("Saved textures:\n");
-		printf("South: %s\n", data->tex_south);
-		printf("North: %s\n", data->tex_north);
-		printf("West: %s\n", data->tex_west);
-		printf("East: %s\n", data->tex_east);
-	}
+		debugger(data);
+	exit(1);
 	if (validate_map(data, data->map) == FAILURE)
 		return (FAILURE);
 	if (validate_textures(data) == FAILURE)

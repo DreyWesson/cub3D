@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/10 22:36:31 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/11 11:22:37 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -239,6 +239,7 @@ void				ft_err(char *message);
 void				print_grid(char **map, int row_nbr);
 void				print_array_2d(char **array_2d);
 void				print_array_2d_newline(char **array_2d);
+void print_map(t_dt *data, char *str);
 // ******** Free *********
 void				ft_free2d(char **ptr);
 void				free_data(t_dt *data);
@@ -261,5 +262,6 @@ int					retrieve_file_data(t_dt *data, char **cub_file);
 int					set_textures(t_dt *data, char *line, int j);
 int					add_colors(t_dt *data, char *line, int j);
 int					add_map(t_dt *data, char **cub_file, int i);
-
+// ****** debugger *******
+void debugger(t_dt *data);
 #endif

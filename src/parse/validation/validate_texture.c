@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_texture.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 21:25:55 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/10 21:29:47 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/11 11:05:21 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ int	validate_textures(t_dt *data)
 		return (FAILURE);
 	data->col_ceiling_int = rgb_to_int(data->col_ceiling);
 	data->col_floor_int = rgb_to_int(data->col_floor);
-	if (DEBUG)
-		printf("\nSaved color settings:\nceiling %d\nfloor %d\n\n",
-			data->col_ceiling_int, data->col_floor_int);
+	// if (DEBUG)
+	// 	printf("\nSaved color settings:\nceiling %d\nfloor %d\n\n",
+	// 		data->col_ceiling_int, data->col_floor_int);
 	return (SUCCESS);
 }
