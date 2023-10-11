@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:53:04 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/10 22:19:38 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/11 10:41:06 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/cub3d.h"
 
-static int	fill_map_2d(t_dt *data, char **map, int index)
+static int	map_to_2d(t_dt *data, char **map, int index)
 {
 	int	i;
 	int	j;
@@ -29,6 +29,12 @@ static int	fill_map_2d(t_dt *data, char **map, int index)
 			return (ft_error("Malloc failed"), FAILURE);
 		while (data->cub_file[index][j] && data->cub_file[index][j] != '\n')
 		{
+			/// @note can check for tabs here rather than another no_tabs func
+			if (data->cub_file[index][j] == '\t')
+			{
+				map[i] = NULL;
+				return (ft_error("Map: Tab instead of space"), FAILURE);
+			}
 			map[i][j] = data->cub_file[index][j];
 			j++;
 		}
@@ -39,7 +45,6 @@ static int	fill_map_2d(t_dt *data, char **map, int index)
 	return (SUCCESS);
 }
 
-// while (ft_isspace(file[i][j])) // r v f ?? - searchin for file start
 static int	count_map_lines(t_dt *data, char **file, int i)
 {
 	int	index_val;
@@ -59,43 +64,38 @@ static int	count_map_lines(t_dt *data, char **file, int i)
 	return (i - index_val);
 }
 
-int	no_tabs(t_dt *data)
-{
-	char	**map;
-	int		i;
-	int		j;
+// int	no_tabs(t_dt *data)
+// {
+// 	char	**map;
+// 	int		i;
+// 	int		j;
 
-	map = data->map;
-	i = 0;
-	while (i < data->map_height)
-	{
-		j = 0;
-		while (map[i][j])
-		{
-			if (map[i][j] == '\t')
-				return (ft_error("Map: Tab instead of space"), FAILURE);
-			j++;
-		}
-		i++;
-	}
-	return (SUCCESS);
-}
+// 	map = data->map;
+// 	i = 0;
+// 	while (i < data->map_height)
+// 	{
+// 		j = 0;
+// 		while (map[i][j])
+// 		{
+// 			if (map[i][j] == '\t')
+// 				return (ft_error("Map: Tab instead of space"), FAILURE);
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// 	return (SUCCESS);
+// }
 
 static int	retrieve_map_data(t_dt *data, char **cub_file, int i)
 {
-	if (DEBUG)
-	{
-		printf("Map start IDX: %d\n", i);
-		printf("Map height: %d\n", data->map_height);
-	}
 	data->map_height = count_map_lines(data, cub_file, i);
 	data->map = malloc(sizeof(char *) * (data->map_height + 1));
 	if (!data->map)
 		return (ft_error("Malloc failed"), FAILURE);
-	if (fill_map_2d(data, data->map, i) == FAILURE)
+	if (map_to_2d(data, data->map, i) == FAILURE)
 		return (FAILURE);
-	if (no_tabs(data) == FAILURE)
-		return (FAILURE);
+	// if (no_tabs(data) == FAILURE)
+	// 	return (FAILURE);
 	return (SUCCESS);
 }
 
@@ -106,6 +106,7 @@ int	add_map(t_dt *data, char **cub_file, int i)
 
 	if (retrieve_map_data(data, cub_file, i) == FAILURE)
 		return (FAILURE);
+	exit(1);
 	if (DEBUG)
 	{
 		printf("\nExtracted map:\n");
