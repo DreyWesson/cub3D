@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate.c                                         :+:      :+:    :+:   */
+/*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 21:19:03 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/10 21:24:27 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/12 15:49:51 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,29 @@ static int	check_map_elements(t_dt *data, char **map)
 	return (SUCCESS);
 }
 
+typedef struct s_point
+{
+	int		x;
+	int		y;
+}			t_point;
+
+void	fill(char **tab, t_point size, t_point cur, char to_fill)
+{
+	if (cur.y < 0 || cur.y >= size.y || cur.x < 0 || cur.x >= size.x
+		|| tab[cur.y][cur.x] != to_fill)
+		return ;
+	tab[cur.y][cur.x] = 'F';
+	fill(tab, size, (t_point){cur.x - 1, cur.y}, to_fill);
+	fill(tab, size, (t_point){cur.x + 1, cur.y}, to_fill);
+	fill(tab, size, (t_point){cur.x, cur.y - 1}, to_fill);
+	fill(tab, size, (t_point){cur.x, cur.y + 1}, to_fill);
+}
+
+void	flood_fill(char **tab, t_point size, t_point begin)
+{
+	fill(tab, size, begin, tab[begin.y][begin.x]);
+}
+
 int	validate_map(t_dt *data, char **map)
 {
 	if (!data->map)
@@ -100,5 +123,9 @@ int	validate_map(t_dt *data, char **map)
 		return (FAILURE);
 	if (check_map_is_at_the_end(data) == FAILURE)
 		return (ft_error("Map: Should be the last element in file"), FAILURE);
+	make_map_rectangular(data);
+	exit(1);
+	if (validate_walls(data) == FAILURE)
+		return (ft_error("Map: Should be surrounded by walls"), FAILURE);
 	return (SUCCESS);
 }

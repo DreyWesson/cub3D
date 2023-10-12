@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   filler.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 20:35:16 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/11 14:51:34 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/12 15:40:50 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ void	fill_up_gaps(char *new_line, t_dt *data, int line_num)
 	while (i < line_width)
 	{
 		if (data->map[line_num][i] == ' ')
-			new_line[i] = '1';
+			new_line[i] = '0';
 		else
 			new_line[i] = data->map[line_num][i];
 		i++;
 	}
 	while (i < data->map_width)
 	{
-		new_line[i] = '1';
+		new_line[i] = '0';
 		i++;
 	}
 	new_line[i] = '\0';

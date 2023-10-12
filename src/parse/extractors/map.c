@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:53:04 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/11 14:59:48 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/12 15:38:45 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,8 @@ int	add_map(t_dt *data, char **cub_file, int i)
 {
 	if (retrieve_map_data(data, cub_file, i) == FAILURE)
 		return (FAILURE);
-	if (validate_walls(data) == FAILURE)
-		return (ft_error("Map: Should be surrounded by walls"), FAILURE);
-	make_map_rectangular(data);
+	if (validate_map(data, data->map) == FAILURE)
+		return (FAILURE);
+	// printf("%c %d %d\n", data->player_dir, data->player_y, data->player_x);
 	return (SUCCESS);
 }

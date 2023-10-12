@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:07:25 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/09 22:03:51 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/12 15:53:00 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	map_reader(t_dt *data)
 	close(data->cub_fd);
 }
 
-void	handle_map(char *cub_path, t_dt *data)
+void	handle_cub(char *cub_path, t_dt *data)
 {
 	init_map(cub_path, data);
 	map_reader(data);

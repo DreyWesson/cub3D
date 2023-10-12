@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/11 14:52:23 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/12 15:52:43 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -239,7 +239,7 @@ void				ft_err(char *message);
 void				print_grid(char **map, int row_nbr);
 void				print_array_2d(char **array_2d);
 void				print_array_2d_newline(char **array_2d);
-void print_map(t_dt *data, char *str);
+void				print_map(t_dt *data, char *str);
 // ******** Free *********
 void				ft_free2d(char **ptr);
 void				free_data(t_dt *data);
@@ -250,7 +250,7 @@ void				free_array_2d(void **array_2d);
 // **** player dir *****
 void				add_player_direction(t_dt *data);
 // ****** Map file *******
-void				handle_map(char *cub_path, t_dt *data);
+void				handle_cub(char *cub_path, t_dt *data);
 void				map_reader(t_dt *data);
 void				make_map_rectangular(t_dt *data);
 // ****** Search *******
@@ -263,5 +263,5 @@ int					set_textures(t_dt *data, char *line, int j);
 int					add_colors(t_dt *data, char *line, int j);
 int					add_map(t_dt *data, char **cub_file, int i);
 // ****** debugger *******
-void debugger(t_dt *data);
+void				debugger(t_dt *data);
 #endif
