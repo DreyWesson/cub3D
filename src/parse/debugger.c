@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 11:07:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/11 20:09:32 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/12 18:52:27 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,19 @@ void texture_data(t_dt *data)
 void player_data(t_dt *data)
 {
 		printf("\033[1;33m""Player data:\n""\033[0m");
-		printf("player_dir (NEWS - direction player is looking at): %c\n",
+		printf("player_dir: %c\n",
 			data->player_dir);
-		printf("player_x (idx on **map): %i\n", data->player_x);
-		printf("player_y (idx on **map): %i\n", data->player_y);
+		printf("player_x: %i\n", data->player_x);
+		printf("player_y: %i\n", data->player_y);
 		printf("\n");
 }
 
-void color_data(int *data, char *str)
+void	color_data(int *data, char *str)
 {
-	printf("\033[1;33m""%s color data:\n""\033[0m", str);
-	int i;
+	int	i;
 
 	i = 0;
+	printf("\033[1;33m""%s color data:\n""\033[0m", str);
 	while (i < 3)
 	{
 		printf("%d", data[i]);
@@ -49,11 +49,11 @@ void color_data(int *data, char *str)
 	printf("\n");
 }
 
-void debugger(t_dt *data)
+void	debugger(t_dt *data)
 {
-    texture_data(data);
+	texture_data(data);
 	color_data(data->col_ceiling, "Ceiling");
 	color_data(data->col_floor, "Floor");
-    print_map(data, "Rectangular map");
+	print_map(data, "Rectangular map");
 	player_data(data);
 }

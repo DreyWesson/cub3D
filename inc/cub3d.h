@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/12 15:56:58 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/12 18:50:25 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
  */
 # include <math.h>
 
-# define DEBUG 1
+# define DEBUG 0
 
 // KEYS //
 # define W 13
@@ -228,6 +228,7 @@ bool				ft_isprint_no_space(int c);
 bool				is_texture_or_color(char c);
 bool				is_texture(char c1, char c2);
 int					is_last_char_one(const char *line);
+char				*ft_strdup2(const char *s1, int len);
 // ******** Prints *********
 int					ft_error(char *message);
 void				ft_err(char *message);

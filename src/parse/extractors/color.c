@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 16:06:07 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/11 18:36:30 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/12 18:19:29 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ int	col_only_digits(char **map)
 			if (!ft_isdigit(map[i][j]) && !ft_isspace(map[i][j])
 				&& map[i][j] != '\n')
 			{
-				if (DEBUG)
-					printf("Color debugger: %s\n", map[i]);
 				return (0);
 			}
 			j++;

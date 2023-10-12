@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 21:19:03 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/12 16:00:16 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/12 18:41:05 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/cub3d.h"
+
+typedef struct s_point
+{
+	int		x;
+	int		y;
+}			t_point;
 
 static int	check_map_is_at_the_end(t_dt *data)
 {
@@ -86,22 +92,21 @@ static int	check_map_elements(t_dt *data, char **map)
 	return (SUCCESS);
 }
 
-typedef struct s_point
-{
-	int		x;
-	int		y;
-}			t_point;
+
 
 void	fill(char **tab, t_point size, t_point cur, char to_fill)
 {
 	if (cur.y < 0 || cur.y >= size.y || cur.x < 0 || cur.x >= size.x
 		|| tab[cur.y][cur.x] != to_fill)
 		return ;
-	tab[cur.y][cur.x] = 'F';
-	fill(tab, size, (t_point){cur.x - 1, cur.y}, to_fill);
-	fill(tab, size, (t_point){cur.x + 1, cur.y}, to_fill);
-	fill(tab, size, (t_point){cur.x, cur.y - 1}, to_fill);
-	fill(tab, size, (t_point){cur.x, cur.y + 1}, to_fill);
+	if (cur.x - 1 >= 0 && tab[cur.x - 1][cur.y] != '1')
+		fill(tab, size, (t_point){cur.x - 1, cur.y}, to_fill);
+	if (cur.x + 1 <= size.x && tab[cur.x + 1][cur.y] != '1')
+		fill(tab, size, (t_point){cur.x + 1, cur.y}, to_fill);
+	if (cur.y - 1 >= 0 && tab[cur.x][cur.y - 1] != '1')
+		fill(tab, size, (t_point){cur.x, cur.y - 1}, to_fill);
+	if (cur.y + 1 <= size.y && tab[cur.x][cur.y + 1] != '1')
+		fill(tab, size, (t_point){cur.x, cur.y + 1}, to_fill);
 }
 
 void	flood_fill(char **tab, t_point size, t_point begin)
@@ -121,9 +126,13 @@ int	validate_map(t_dt *data, char **map)
 		return (FAILURE);
 	if (check_map_is_at_the_end(data) == FAILURE)
 		return (ft_error("Map: Should be the last element in file"), FAILURE);
-	make_map_rectangular(data);
-	exit(1);
+	// print_map(data, "Extracted Map");
+	debugger(data);
+	// exit(1);
+	// flood_fill(data->map, (t_point){data->map_width, data->map_height}, (t_point){data->player_x, data->player_y});
+	// printf("Here\n");
 	if (validate_walls(data) == FAILURE)
 		return (ft_error("Map: Should be surrounded by walls"), FAILURE);
+	// make_map_rectangular(data);
 	return (SUCCESS);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:53:04 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/12 15:38:45 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/12 18:29:43 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ static int	map_to_2d(t_dt *data, char **map, int index)
 			return (ft_error("Malloc failed"), FAILURE);
 		while (data->cub_file[index][j] && data->cub_file[index][j] != '\n')
 		{
-			/// @note can check for tabs here rather than another no_tabs func
+
+			/// @note can check for tabs here rather than no_tabs func
 			if (data->cub_file[index][j] == '\t')
 			{
 				map[i] = NULL;
@@ -84,16 +85,16 @@ static int	count_map_lines(t_dt *data, char **file, int i)
 // 	return (SUCCESS);
 // }
 
-static int	retrieve_map_data(t_dt *data, char **cub_file, int i)
+static int	save_map_data(t_dt *data, char **cub_file, int i)
 {
 	data->map_height = count_map_lines(data, cub_file, i);
 	data->map = malloc(sizeof(char *) * (data->map_height + 1));
 	if (!data->map)
 		return (ft_error("Malloc failed"), FAILURE);
+
 	if (map_to_2d(data, data->map, i) == FAILURE)
 		return (FAILURE);
-	if (DEBUG)
-		print_map(data, "Extracted Map");
+	// print_map(data, "Extracted Map");
 	// if (no_tabs(data) == FAILURE)
 	// 	return (FAILURE);
 	return (SUCCESS);
@@ -101,7 +102,7 @@ static int	retrieve_map_data(t_dt *data, char **cub_file, int i)
 
 int	add_map(t_dt *data, char **cub_file, int i)
 {
-	if (retrieve_map_data(data, cub_file, i) == FAILURE)
+	if (save_map_data(data, cub_file, i) == FAILURE)
 		return (FAILURE);
 	if (validate_map(data, data->map) == FAILURE)
 		return (FAILURE);
