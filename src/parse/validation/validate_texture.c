@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 21:25:55 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/11 11:05:21 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/11 19:00:27 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,44 +24,56 @@ static unsigned long	rgb_to_int(int *rgb_arr)
 	return (((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff));
 }
 
-static int	validate_rgb(int *rgb)
-{
-	int	i;
+// static int	validate_rgb(int *rgb)
+// {
+// 	int	i;
 
-	i = 0;
-	while (i < 3)
-	{
-		if (rgb[i] < 0 || rgb[i] > 255)
-			return (ft_error("Color: Invalid RGB value"), FAILURE);
-		i++;
-	}
-	return (SUCCESS);
-}
+// 	i = 0;
+// 	while (i < 3)
+// 	{
+// 		if (rgb[i] < 0 || rgb[i] > 255)
+// 			return (ft_error("Color: Invalid RGB value"), FAILURE);
+// 		i++;
+// 	}
+// 	return (SUCCESS);
+// }
 
-int	check_xpm_file_extension(char *filename)
-{
-	size_t	filename_length;
+// int	check_xpm_file_extension(char *filename)
+// {
+// 	size_t	filename_length;
 
-	filename_length = ft_strlen(filename);
-	if (filename_length < 4)
-		return (FAILURE);
-	if (ft_strncmp(&filename[filename_length - 4], ".xpm", 4) == 0)
-		return (SUCCESS);
-	else
-		return (FAILURE);
-}
+// 	filename_length = ft_strlen(filename);
+// 	if (filename_length < 4)
+// 		return (FAILURE);
+// 	if (ft_strncmp(&filename[filename_length - 4], ".xpm", 4) == 0)
+// 		return (SUCCESS);
+// 	else
+// 		return (FAILURE);
+// }
 
 int	validate_xpm_file(char *filename)
 {
 	int	fd;
 
+	if (!is_valid_exe(filename, ".xpm"))
+		return (ft_error("Expecting a .xpm file"), FAILURE);
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		return (ft_error("Couldn't open file"), FAILURE);
 	close(fd);
-	if (check_xpm_file_extension(filename) == FAILURE)
-		return (ft_error("Invalid file extention"), FAILURE);
+	// if (check_xpm_file_extension(filename) == FAILURE)
+	// 	return (ft_error("Invalid file extention"), FAILURE);
 	return (SUCCESS);
+}
+
+int	handle_xpm(t_dt *data)
+{
+	return (
+		validate_xpm_file(data->tex_north) == FAILURE
+		|| validate_xpm_file(data->tex_east) == FAILURE
+		|| validate_xpm_file(data->tex_west) == FAILURE
+		|| validate_xpm_file(data->tex_south) == FAILURE
+	);
 }
 
 int	validate_textures(t_dt *data)
@@ -71,17 +83,9 @@ int	validate_textures(t_dt *data)
 		return (ft_error("Textures: Missing data"), FAILURE);
 	if (!data->col_floor || !data->col_ceiling)
 		return (ft_error("Color: Missing"), FAILURE);
-	if (validate_xpm_file(data->tex_north) == FAILURE
-		|| validate_xpm_file(data->tex_east) == FAILURE
-		|| validate_xpm_file(data->tex_west) == FAILURE
-		|| validate_xpm_file(data->tex_south) == FAILURE
-		|| validate_rgb(data->col_floor) == FAILURE
-		|| validate_rgb(data->col_ceiling) == FAILURE)
+	if (handle_xpm(data))
 		return (FAILURE);
 	data->col_ceiling_int = rgb_to_int(data->col_ceiling);
 	data->col_floor_int = rgb_to_int(data->col_floor);
-	// if (DEBUG)
-	// 	printf("\nSaved color settings:\nceiling %d\nfloor %d\n\n",
-	// 		data->col_ceiling_int, data->col_floor_int);
 	return (SUCCESS);
 }
