@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 21:19:03 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/13 11:34:15 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/13 12:03:07 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,33 +86,6 @@ static int	check_map_elements(t_dt *data, char **map)
 	return (SUCCESS);
 }
 
-int validate_walls2(t_dt *data)
-{
-	char	**map_clone;
-	int		i;
-	int		valid;
-
-	// i = 0;
-	// while (i < data->map_height)
-	// {
-	// 	if (is_last_char_one(data->map[i]) == FAILURE)
-	// 		return (FAILURE);
-	// 	i++;
-	// }
-	map_clone = malloc(data->map_height * sizeof(char *));
-	i = -1;
-	while (++i < data->map_height)
-		map_clone[i] = ft_strdup2(data->map[i], data->map_width);
-	valid = flood_fill(map_clone, (t_point){data->map_width, data->map_height},
-			data->player_x, data->player_y);
-	i = -1;
-	while (++i < data->map_height)
-		free(map_clone[i]);
-	free(map_clone);
-
-	return (valid);
-}
-
 int	validate_map(t_dt *data, char **map)
 {
 	if (!data->map)
@@ -126,7 +99,7 @@ int	validate_map(t_dt *data, char **map)
 	if (check_map_is_at_the_end(data) == FAILURE)
 		return (ft_error("Map: Should be the last element in file"), FAILURE);
 	make_map_rectangular(data);
-	if (validate_walls2(data) == FAILURE)
+	if (validate_walls(data) == FAILURE)
 		return (ft_error("Map: Should be surrounded by walls"), FAILURE);
 	return (SUCCESS);
 }

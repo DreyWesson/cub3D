@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/13 11:01:23 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/13 12:36:45 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,6 +171,14 @@ typedef struct s_dfs
 	int				dr[4];
 	int				dc[4];
 }					t_dfs;
+
+typedef struct s_wall_img
+{
+	void	*north;
+	void	*east;
+	void	*south;
+	void	*west;
+}	t_wall_img;
 
 typedef struct s_point
 {
