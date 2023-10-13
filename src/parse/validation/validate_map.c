@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 21:19:03 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/12 18:41:05 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/13 09:19:06 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,24 +94,31 @@ static int	check_map_elements(t_dt *data, char **map)
 
 
 
-void	fill(char **tab, t_point size, t_point cur, char to_fill)
+int	fill(char **tab, t_point size,	int x, int y)
 {
-	if (cur.y < 0 || cur.y >= size.y || cur.x < 0 || cur.x >= size.x
-		|| tab[cur.y][cur.x] != to_fill)
-		return ;
-	if (cur.x - 1 >= 0 && tab[cur.x - 1][cur.y] != '1')
-		fill(tab, size, (t_point){cur.x - 1, cur.y}, to_fill);
-	if (cur.x + 1 <= size.x && tab[cur.x + 1][cur.y] != '1')
-		fill(tab, size, (t_point){cur.x + 1, cur.y}, to_fill);
-	if (cur.y - 1 >= 0 && tab[cur.x][cur.y - 1] != '1')
-		fill(tab, size, (t_point){cur.x, cur.y - 1}, to_fill);
-	if (cur.y + 1 <= size.y && tab[cur.x][cur.y + 1] != '1')
-		fill(tab, size, (t_point){cur.x, cur.y + 1}, to_fill);
+	if (y < 0 || y >= size.y || x < 0 || x >= size.x)
+		return (printf("Failed\n"));
+	if (tab[y][x] != 'C')
+		return (1);
+		tab[y][x] = 'C';
+		fill(tab, size, x, y + 1);
+		fill(tab, size, x, y - 1);
+		fill(tab, size, x - 1, y);
+		fill(tab, size, x + 1, y);
+		return (0);
+	// if (cur.x - 1 >= 0 && tab[cur.x - 1][cur.y] != '1')
+	// 	fill(tab, size, (t_point){cur.x - 1, cur.y}, to_fill);
+	// if (cur.x + 1 <= size.x && tab[cur.x + 1][cur.y] != '1')
+	// 	fill(tab, size, (t_point){cur.x + 1, cur.y}, to_fill);
+	// if (cur.y - 1 >= 0 && tab[cur.x][cur.y - 1] != '1')
+	// 	fill(tab, size, (t_point){cur.x, cur.y - 1}, to_fill);
+	// if (cur.y + 1 <= size.y && tab[cur.x][cur.y + 1] != '1')
+	// 	fill(tab, size, (t_point){cur.x, cur.y + 1}, to_fill);
 }
 
-void	flood_fill(char **tab, t_point size, t_point begin)
+void	flood_fill(char **tab, t_point size, int x, int y)
 {
-	fill(tab, size, begin, tab[begin.y][begin.x]);
+	fill(tab, size, x, y);
 }
 
 int	validate_map(t_dt *data, char **map)
@@ -120,19 +127,20 @@ int	validate_map(t_dt *data, char **map)
 		return (ft_error("Map: no player found"), FAILURE);
 	if (data->map_height < 3)
 		return (ft_error("Map: Should contain at least 3 lines"), FAILURE);
+	debugger(data);
 	if (check_map_elements(data, map) == FAILURE)
 		return (FAILURE);
 	if (add_player_position(data, map) == FAILURE)
 		return (FAILURE);
 	if (check_map_is_at_the_end(data) == FAILURE)
 		return (ft_error("Map: Should be the last element in file"), FAILURE);
+	data->map[data->player_x][data->player_y] = data->player_dir;
 	// print_map(data, "Extracted Map");
-	debugger(data);
 	// exit(1);
-	// flood_fill(data->map, (t_point){data->map_width, data->map_height}, (t_point){data->player_x, data->player_y});
+	// flood_fill(data->map, (t_point){data->map_width, data->map_height}, data->player_x, data->player_y);
 	// printf("Here\n");
-	if (validate_walls(data) == FAILURE)
-		return (ft_error("Map: Should be surrounded by walls"), FAILURE);
+	// if (validate_walls(data) == FAILURE)
+	// 	return (ft_error("Map: Should be surrounded by walls"), FAILURE);
 	// make_map_rectangular(data);
 	return (SUCCESS);
 }
