@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:53:04 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/12 18:29:43 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/13 11:35:17 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static int	map_to_2d(t_dt *data, char **map, int index)
 			return (ft_error("Malloc failed"), FAILURE);
 		while (data->cub_file[index][j] && data->cub_file[index][j] != '\n')
 		{
-
 			/// @note can check for tabs here rather than no_tabs func
 			if (data->cub_file[index][j] == '\t')
 			{
@@ -55,8 +54,9 @@ static int	count_map_lines(t_dt *data, char **file, int i)
 		j = 0;
 		while (ft_isspace(file[i][j]))
 			j++;
-		if (file[i][j] && file[i][j] != '1')
-			break ;
+		/// @note commented because not all edges gotta be 1 to be valid
+		// if (file[i][j] && file[i][j] != '1')
+		// 	break ;
 		i++;
 	}
 	data->map_end_idx = i;
@@ -91,9 +91,9 @@ static int	save_map_data(t_dt *data, char **cub_file, int i)
 	data->map = malloc(sizeof(char *) * (data->map_height + 1));
 	if (!data->map)
 		return (ft_error("Malloc failed"), FAILURE);
-
 	if (map_to_2d(data, data->map, i) == FAILURE)
 		return (FAILURE);
+	// print_map(data, "Extracted Map");
 	// print_map(data, "Extracted Map");
 	// if (no_tabs(data) == FAILURE)
 	// 	return (FAILURE);

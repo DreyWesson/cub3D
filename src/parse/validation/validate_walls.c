@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 19:13:41 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/12 18:48:46 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/13 11:17:57 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,15 @@ int	validate_walls(t_dt *data)
 	i = -1;
 	while (++i < data->map_height)
 		map_clone[i] = ft_strdup2(data->map[i], data->map_width);
-	valid = dfs(data, map_clone);
+	// valid = dfs(data, map_clone);
+	print_array_2d(map_clone);
+	valid = flood_fill(map_clone, (t_point){data->map_width, data->map_height},
+		data->player_x, data->player_y);
 	i = -1;
 	while (++i < data->map_height)
 		free(map_clone[i]);
 	free(map_clone);
-	if (valid)
+	if (valid != FAILURE)
 		return (SUCCESS);
 	return (FAILURE);
 }

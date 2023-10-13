@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/12 18:50:25 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/13 11:01:23 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,6 +172,12 @@ typedef struct s_dfs
 	int				dc[4];
 }					t_dfs;
 
+typedef struct s_point
+{
+	int		x;
+	int		y;
+}			t_point;
+
 typedef struct s_dt
 {
 	// ------- saved .cub file -------
@@ -251,6 +257,7 @@ void				map_reader(t_dt *data);
 void				make_map_rectangular(t_dt *data);
 // ****** Search *******
 int					dfs(t_dt *data, char **map_clone);
+int					flood_fill(char **tab, t_point size, int x, int y);
 // ****** init_data2 *******
 void				init_data2(t_dt *data);
 // ****** extractions *******

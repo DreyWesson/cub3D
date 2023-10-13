@@ -6,17 +6,11 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 21:19:03 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/13 09:48:02 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/13 11:34:15 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/cub3d.h"
-
-typedef struct s_point
-{
-	int		x;
-	int		y;
-}			t_point;
 
 static int	check_map_is_at_the_end(t_dt *data)
 {
@@ -92,26 +86,32 @@ static int	check_map_elements(t_dt *data, char **map)
 	return (SUCCESS);
 }
 
-
-
-int	flood_fill(char **tab, t_point size,	int x, int y)
+int validate_walls2(t_dt *data)
 {
-	if (y < 0 || y >= size.y || x < 0 || x >= size.x)
-		return (ft_err("Map not surrounded by wall"), FAILURE);
-	if (tab[y][x] == 'C' || tab[y][x] == '1' || tab[y][x] == ' ')
-		return (1);
-	tab[y][x] = 'C';
-	flood_fill(tab, size, x, y + 1);
-	flood_fill(tab, size, x, y - 1);
-	flood_fill(tab, size, x - 1, y);
-	flood_fill(tab, size, x + 1, y);
-	return (SUCCESS);
-}
+	char	**map_clone;
+	int		i;
+	int		valid;
 
-// void	flood_fill(char **tab, t_point size, int x, int y)
-// {
-// 	fill(tab, size, x, y);
-// }
+	// i = 0;
+	// while (i < data->map_height)
+	// {
+	// 	if (is_last_char_one(data->map[i]) == FAILURE)
+	// 		return (FAILURE);
+	// 	i++;
+	// }
+	map_clone = malloc(data->map_height * sizeof(char *));
+	i = -1;
+	while (++i < data->map_height)
+		map_clone[i] = ft_strdup2(data->map[i], data->map_width);
+	valid = flood_fill(map_clone, (t_point){data->map_width, data->map_height},
+			data->player_x, data->player_y);
+	i = -1;
+	while (++i < data->map_height)
+		free(map_clone[i]);
+	free(map_clone);
+
+	return (valid);
+}
 
 int	validate_map(t_dt *data, char **map)
 {
@@ -125,14 +125,8 @@ int	validate_map(t_dt *data, char **map)
 		return (FAILURE);
 	if (check_map_is_at_the_end(data) == FAILURE)
 		return (ft_error("Map: Should be the last element in file"), FAILURE);
-	data->map[data->player_y][data->player_x] = data->player_dir;
-	print_map(data, "Extracted Map");
-	flood_fill(data->map, (t_point){data->map_width, data->map_height}, data->player_x, data->player_y);
-	print_map(data, "Flood filled");
-	// debugger(data);
-	// if (validate_walls(data) == FAILURE)
-	// 	return (ft_error("Map: Should be surrounded by walls"), FAILURE);
 	make_map_rectangular(data);
-	print_map(data, "Rectangular");
+	if (validate_walls2(data) == FAILURE)
+		return (ft_error("Map: Should be surrounded by walls"), FAILURE);
 	return (SUCCESS);
 }
