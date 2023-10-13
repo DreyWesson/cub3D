@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:53:04 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/13 11:35:17 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/13 11:50:45 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,6 @@ static int	save_map_data(t_dt *data, char **cub_file, int i)
 		return (ft_error("Malloc failed"), FAILURE);
 	if (map_to_2d(data, data->map, i) == FAILURE)
 		return (FAILURE);
-	// print_map(data, "Extracted Map");
-	// print_map(data, "Extracted Map");
 	// if (no_tabs(data) == FAILURE)
 	// 	return (FAILURE);
 	return (SUCCESS);
@@ -106,6 +104,5 @@ int	add_map(t_dt *data, char **cub_file, int i)
 		return (FAILURE);
 	if (validate_map(data, data->map) == FAILURE)
 		return (FAILURE);
-	// printf("%c %d %d\n", data->player_dir, data->player_y, data->player_x);
 	return (SUCCESS);
 }

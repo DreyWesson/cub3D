@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 19:17:55 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/13 11:02:11 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/13 11:48:43 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int	flood_fill(char **tab, t_point size, int x, int y)
 
 	if (y < 0 || y >= size.y || x < 0 || x >= size.x)
 		return (FAILURE);
-	if (tab[y][x] == 'V' || tab[y][x] == '1' || tab[y][x] == ' ')
+	if (tab[y][x] == 'V' || tab[y][x] == '1')
 		return (1);
 	tab[y][x] = 'V';
 	result = flood_fill(tab, size, x, y + 1);
