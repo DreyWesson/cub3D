@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 21:19:03 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/14 11:48:43 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/14 12:40:43 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static int	check_map_is_at_the_end(t_dt *data)
 	int	j;
 
 	i = data->map_end_idx;
+	printf("%d %d\n", data->map_end_idx, data->map_height);
 	while (data->cub_file[i])
 	{
 		j = 0;
@@ -74,9 +75,9 @@ static int	check_map_elements(t_dt *data, char **map)
 			while (ft_isspace(data->map[i][j]))
 				j++;
 			if (!(ft_strchr("10NEWS", map[i][j])))
-				return (ft_error("Map: Contains invalid character"), FAILURE);
+				return (ft_error("Map: Invalid map"), FAILURE);
 			if (ft_strchr("NEWS", map[i][j]) && data->player_dir != '0')
-				return (ft_error("Map: has more than one player"), FAILURE);
+				return (ft_error("Map: Invalid map"), FAILURE);
 			if (ft_strchr("NEWS", map[i][j]) && data->player_dir == '0')
 				data->player_dir = map[i][j];
 			j++;
@@ -89,9 +90,7 @@ static int	check_map_elements(t_dt *data, char **map)
 int	validate_map(t_dt *data, char **map)
 {
 	if (!data->map)
-		return (ft_error("Map: no player found"), FAILURE);
-	if (data->map_height < 3)
-		return (ft_error("Map: Should contain at least 3 lines"), FAILURE);
+		return (ft_error("Map: no map found"), FAILURE);
 	if (check_map_elements(data, map) == FAILURE)
 		return (FAILURE);
 	if (add_player_position(data, map) == FAILURE)
