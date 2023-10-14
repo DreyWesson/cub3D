@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:53:04 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/13 11:50:45 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/14 11:34:28 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,6 @@ static int	save_map_data(t_dt *data, char **cub_file, int i)
 int	add_map(t_dt *data, char **cub_file, int i)
 {
 	if (save_map_data(data, cub_file, i) == FAILURE)
-		return (FAILURE);
-	if (validate_map(data, data->map) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }
