@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 14:15:02 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/14 11:35:36 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/14 11:56:10 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	parsing(t_dt *data, char **argv)
 		return (FAILURE);
 	if (validate_textures(data) == FAILURE)
 		return (FAILURE);
+	debugger(data);
 	// add_player_direction(data);
 	return (SUCCESS);
 }
