@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/13 12:36:45 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/14 14:31:11 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,6 +174,7 @@ typedef struct s_dfs
 
 typedef struct s_wall_img
 {
+	void	*blocks;
 	void	*north;
 	void	*east;
 	void	*south;
