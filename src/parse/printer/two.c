@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   two.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 13:27:01 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/11 13:02:34 by doduwole         ###   ########.fr       */
+/*   Created: 2023/10/11 11:21:59 by doduwole          #+#    #+#             */
+/*   Updated: 2023/10/11 14:57:14 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./inc/cub3d.h"
+#include "../../../inc/cub3d.h"
 
-int	main(int argc, char **argv)
+void print_map(t_dt *data, char *str)
 {
-	t_dt	data;
-
-	if (argc != 2)
-		return (ft_error("Wrong arguments - pass ./cub3d ./path_to_map"));
-	init_data2(&data);
-	if (parsing(&data, argv) == FAILURE)
-		return (free_data(&data), FAILURE);
-	return (0);
+		printf("\033[1;33m""\n%s:\n""\033[0m", str);
+		print_array_2d_newline(data->map);
+		printf("\n");    
 }
