@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+         #
+#    By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 13:21:00 by doduwole          #+#    #+#              #
-#    Updated: 2023/10/05 12:32:08 by doduwole         ###   ########.fr        #
+#    Updated: 2023/10/30 12:32:35 by doduwole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ INC_DIR = inc
 
 OBJS = $(SRC:%.c=$(OBJ_DIR)/%.o)
 
-CC = gcc -g -fsanitize=address 
+CC = gcc #-g -fsanitize=address 
 
 LIBFTDIR = ./inc/libft
 
