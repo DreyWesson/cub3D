@@ -44,9 +44,9 @@
 
 int	validate_walls(t_dt *data)
 {
-	flood_fill(data->map, (t_point){data->map_width, data->map_height},
-		data->player_x, data->player_y);
-		return (1);
-	// return (flood_fill(data->map, (t_point){data->map_width, data->map_height},
-	// 	data->player_x, data->player_y));
+	// flood_fill(data->map, (t_point){data->map_width, data->map_height},
+	// 	data->player_x, data->player_y);
+	// 	return (1);
+	return (flood_fill(data->map, (t_point){data->map_width, data->map_height},
+		data->player_x, data->player_y));
 }

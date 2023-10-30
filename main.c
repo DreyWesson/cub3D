@@ -21,5 +21,6 @@ int	main(int argc, char **argv)
 	init_data2(&data);
 	if (parsing(&data, argv) == FAILURE)
 		return (free_data(&data), FAILURE);
+	free_data(&data);
 	return (0);
 }
