@@ -30,7 +30,7 @@ void	init_map(char *cub_path, t_dt *data)
 	data->cub_height = line_counter(cub_path);
 	data->cub_file = ft_calloc(sizeof(char *), data->cub_height + 1);
 	data->cub_path = cub_path;
-	if (!(data->cub_file))
+	if (!data->cub_file)
 		return (ft_err("Malloc failed"), clean_exit(data, FAILURE));
 	data->cub_fd = open_file(cub_path, data);
 }
