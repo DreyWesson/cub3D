@@ -66,7 +66,7 @@ int	validate_xpm_file(char *filename)
 	return (SUCCESS);
 }
 
-int	handle_xpm(t_dt *data)
+int	handle_xpm(t_data *data)
 {
 	return (
 		validate_xpm_file(data->tex_north) == FAILURE
@@ -76,7 +76,7 @@ int	handle_xpm(t_dt *data)
 	);
 }
 
-int	validate_textures(t_dt *data)
+int	validate_textures(t_data *data)
 {
 	if (!data->tex_north || !data->tex_east || !data->tex_west
 		|| !data->tex_south)

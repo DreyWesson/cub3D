@@ -12,7 +12,7 @@
 
 #include "../../../inc/cub3d.h"
 
-int	open_file(char *filepath, t_dt *data)
+int	open_file(char *filepath, t_data *data)
 {
 	int	fd;
 
@@ -25,7 +25,7 @@ int	open_file(char *filepath, t_dt *data)
 	return (fd);
 }
 
-void	init_map(char *cub_path, t_dt *data)
+void	init_map(char *cub_path, t_data *data)
 {
 	data->cub_height = line_counter(cub_path);
 	data->cub_file = ft_calloc(sizeof(char *), data->cub_height + 1);
@@ -35,7 +35,7 @@ void	init_map(char *cub_path, t_dt *data)
 	data->cub_fd = open_file(cub_path, data);
 }
 
-void	map_reader(t_dt *data)
+void	map_reader(t_data *data)
 {
 	char	*line;
 	int		row;
@@ -63,7 +63,7 @@ void	map_reader(t_dt *data)
 	close(data->cub_fd);
 }
 
-void	handle_cub(char *cub_path, t_dt *data)
+void	handle_cub(char *cub_path, t_data *data)
 {
 	if (!is_valid_exe(cub_path, ".cub"))
 	{

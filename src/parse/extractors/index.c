@@ -12,7 +12,7 @@
 
 #include "../../../inc/cub3d.h"
 
-static int	handle_extraction(t_dt *data, char **cub_file, int i, int j)
+static int	handle_extraction(t_data *data, char **cub_file, int i, int j)
 {
 	while (ft_isspace(cub_file[i][j]) || cub_file[i][j] == '\n')
 		j++;
@@ -39,7 +39,7 @@ static int	handle_extraction(t_dt *data, char **cub_file, int i, int j)
 	return (42);
 }
 
-int	retrieve_file_data(t_dt *data, char **cub_file)
+int	retrieve_file_data(t_data *data, char **cub_file)
 {
 	int i;
 	int j;

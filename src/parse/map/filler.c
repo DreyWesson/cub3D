@@ -12,7 +12,7 @@
 
 #include "../../../inc/cub3d.h"
 
-// static void	fill_up_spaces(char *new_line, t_dt *data)
+// static void	fill_up_spaces(char *new_line, t_data *data)
 // {
 // 	int	j;
 
@@ -38,7 +38,7 @@
 // 	}
 // }
 
-void	fill_up_gaps(char *new_line, t_dt *data, int line_num)
+void	fill_up_gaps(char *new_line, t_data *data, int line_num)
 {
 	int	i;
 	int	line_width;
@@ -61,7 +61,7 @@ void	fill_up_gaps(char *new_line, t_dt *data, int line_num)
 	new_line[i] = '\0';
 }
 
-void	make_map_rectangular(t_dt *data)
+void	make_map_rectangular(t_data *data)
 {
 	int		i;
 	char	*line;

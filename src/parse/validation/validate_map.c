@@ -12,7 +12,7 @@
 
 #include "../../../inc/cub3d.h"
 
-static int	check_map_is_at_the_end(t_dt *data)
+static int	check_map_is_at_the_end(t_data *data)
 {
 	int	i;
 	int	j;
@@ -34,7 +34,7 @@ static int	check_map_is_at_the_end(t_dt *data)
 	return (SUCCESS);
 }
 
-static int	add_player_position(t_dt *data, char **map)
+static int	add_player_position(t_data *data, char **map)
 {
 	int	i;
 	int	j;
@@ -60,7 +60,7 @@ static int	add_player_position(t_dt *data, char **map)
 	return (SUCCESS);
 }
 
-static int	check_map_elements(t_dt *data, char **map)
+static int	check_map_elements(t_data *data, char **map)
 {
 	int	i;
 	int	j;
@@ -87,7 +87,7 @@ static int	check_map_elements(t_dt *data, char **map)
 	return (SUCCESS);
 }
 
-int	validate_map(t_dt *data, char **map)
+int	validate_map(t_data *data, char **map)
 {
 	if (!data->map)
 		return (ft_error("Map: no map found"), FAILURE);

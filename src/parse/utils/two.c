@@ -68,7 +68,7 @@ size_t	ft_strlen_no_newline(const char *str)
 	return (len);
 }
 
-size_t	find_max_width(t_dt *data, int i)
+size_t	find_max_width(t_data *data, int i)
 {
 	size_t	max_width;
 

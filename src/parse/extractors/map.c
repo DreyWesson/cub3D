@@ -12,7 +12,7 @@
 
 #include "../../../inc/cub3d.h"
 
-static int	map_to_2d(t_dt *data, char **map, int index)
+static int	map_to_2d(t_data *data, char **map, int index)
 {
 	int	i;
 	int	j;
@@ -43,7 +43,7 @@ static int	map_to_2d(t_dt *data, char **map, int index)
 	return (SUCCESS);
 }
 
-static int	count_map_lines(t_dt *data, char **file, int i)
+static int	count_map_lines(t_data *data, char **file, int i)
 {
 	int	index_val;
 	int	j;
@@ -63,7 +63,7 @@ static int	count_map_lines(t_dt *data, char **file, int i)
 	return (i - index_val);
 }
 
-// int	no_tabs(t_dt *data)
+// int	no_tabs(t_data *data)
 // {
 // 	char	**map;
 // 	int		i;
@@ -85,7 +85,7 @@ static int	count_map_lines(t_dt *data, char **file, int i)
 // 	return (SUCCESS);
 // }
 
-static int	save_map_data(t_dt *data, char **cub_file, int i)
+static int	save_map_data(t_data *data, char **cub_file, int i)
 {
 	data->map_height = count_map_lines(data, cub_file, i);
 	data->map = malloc(sizeof(char *) * (data->map_height + 1));
@@ -98,7 +98,7 @@ static int	save_map_data(t_dt *data, char **cub_file, int i)
 	return (SUCCESS);
 }
 
-int	add_map(t_dt *data, char **cub_file, int i)
+int	add_map(t_data *data, char **cub_file, int i)
 {
 	if (save_map_data(data, cub_file, i) == FAILURE)
 		return (FAILURE);

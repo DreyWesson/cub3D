@@ -40,7 +40,7 @@ static char	*add_tex_path(char *line, int j)
 	return (path);
 }
 
-int	set_textures(t_dt *data, char *line, int j)
+int	set_textures(t_data *data, char *line, int j)
 {
 	if (line[j + 2] && ft_isprint_no_space(line[j + 2]))
 		return (ft_error("Textures: Invalid"), FAILURE);

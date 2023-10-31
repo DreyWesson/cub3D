@@ -13,7 +13,7 @@
 #include "../../inc/cub3d.h"
 
 
-void texture_data(t_dt *data)
+void texture_data(t_data *data)
 {
 		printf("\033[1;33m""Saved textures:\n""\033[0m");
 		printf("South: %s\n", data->tex_south);
@@ -23,7 +23,7 @@ void texture_data(t_dt *data)
 		printf("\n");
 }
 
-void player_data(t_dt *data)
+void player_data(t_data *data)
 {
 		printf("\033[1;33m""Player data:\n""\033[0m");
 		printf("player_dir: %c\n",
@@ -49,7 +49,7 @@ void	color_data(int *data, char *str)
 	printf("\n");
 }
 
-void	debugger(t_dt *data)
+void	debugger(t_data *data)
 {
 	texture_data(data);
 	color_data(data->col_ceiling, "Ceiling");

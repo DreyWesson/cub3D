@@ -12,7 +12,7 @@
 
 #include "../../../inc/cub3d.h"
 
-void print_map(t_dt *data, char *str)
+void print_map(t_data *data, char *str)
 {
 		printf("\033[1;33m""\n%s:\n""\033[0m", str);
 		print_array_2d_newline(data->map);

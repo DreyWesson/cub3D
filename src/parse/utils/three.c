@@ -12,7 +12,7 @@
 
 #include "../../../inc/cub3d.h"
 
-void	clean_exit(t_dt *data, int exitstatus)
+void	clean_exit(t_data *data, int exitstatus)
 {
 	if (data)
 		free_data(data);

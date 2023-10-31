@@ -91,7 +91,7 @@ int	*add_rgb(char *line)
 	return (convert_and_add_rgb(rgb_to_convert, rgb));
 }
 
-int	add_colors(t_dt *data, char *line, int j)
+int	add_colors(t_data *data, char *line, int j)
 {
 	if (line[j + 1] && ft_isprint_no_space(line[j + 1]))
 		return (ft_error("Colors: Invalid F or C data"), FAILURE);

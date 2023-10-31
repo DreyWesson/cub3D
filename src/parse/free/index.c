@@ -27,7 +27,7 @@ void	free_array_2d(void **array_2d)
 	free(array_2d);
 }
 
-void	free_cub(t_dt *data)
+void	free_cub(t_data *data)
 {
 	data->cub_path = NULL;
 	if (data->cub_file)
@@ -39,7 +39,7 @@ void	free_cub(t_dt *data)
 		close(data->cub_fd);
 }
 
-void	free_textures(t_dt *data)
+void	free_textures(t_data *data)
 {
 	if (data->tex_east)
 	{
@@ -63,7 +63,7 @@ void	free_textures(t_dt *data)
 	}
 }
 
-void	free_colors(t_dt *data)
+void	free_colors(t_data *data)
 {
 	if (data->col_ceiling)
 	{
@@ -77,7 +77,7 @@ void	free_colors(t_dt *data)
 	}
 }
 
-void	free_data(t_dt *data)
+void	free_data(t_data *data)
 {
 	free_cub(data);
 	free_textures(data);
