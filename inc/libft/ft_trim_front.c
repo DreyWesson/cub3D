@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_trim_front.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 09:16:08 by doduwole          #+#    #+#             */
-/*   Updated: 2023/03/21 10:15:18 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/31 23:57:23 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*ft_trim_front(char const *s1, char const *set)
 	while (s1[start] && ft_char_in_set(s1[start], set))
 		start++;
 	len = ft_strlen(s1);
-	str = malloc(len - start + 1);
+	str = ft_calloc(sizeof(char), len - start + 1);
 	if (!str)
 		return (NULL);
 	i = 0;

@@ -6,13 +6,13 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 21:30:39 by eramusho          #+#    #+#             */
-/*   Updated: 2023/10/11 20:12:52 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/11/01 00:33:31 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/cub3d.h"
 
-void	init_data2(t_data *data)
+void	init_data(t_data *data)
 {
 	data->cub_path = NULL;
 	data->cub_height = 0;

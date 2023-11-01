@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 14:15:02 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/14 12:26:16 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/11/01 00:35:11 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	parsing(t_data *data, char **argv)
 {
-
+	init_data(data);
 	handle_cub(argv[1], data);
 	if (retrieve_file_data(data, data->cub_file) == FAILURE)
 		return (FAILURE);

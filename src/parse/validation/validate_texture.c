@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 21:25:55 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/11 19:00:27 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/31 12:36:01 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,32 +24,6 @@ static unsigned long	rgb_to_int(int *rgb_arr)
 	return (((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff));
 }
 
-// static int	validate_rgb(int *rgb)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (i < 3)
-// 	{
-// 		if (rgb[i] < 0 || rgb[i] > 255)
-// 			return (ft_error("Color: Invalid RGB value"), FAILURE);
-// 		i++;
-// 	}
-// 	return (SUCCESS);
-// }
-
-// int	check_xpm_file_extension(char *filename)
-// {
-// 	size_t	filename_length;
-
-// 	filename_length = ft_strlen(filename);
-// 	if (filename_length < 4)
-// 		return (FAILURE);
-// 	if (ft_strncmp(&filename[filename_length - 4], ".xpm", 4) == 0)
-// 		return (SUCCESS);
-// 	else
-// 		return (FAILURE);
-// }
 
 int	validate_xpm_file(char *filename)
 {
@@ -61,8 +35,6 @@ int	validate_xpm_file(char *filename)
 	if (fd == -1)
 		return (ft_error("Couldn't open file"), FAILURE);
 	close(fd);
-	// if (check_xpm_file_extension(filename) == FAILURE)
-	// 	return (ft_error("Invalid file extention"), FAILURE);
 	return (SUCCESS);
 }
 

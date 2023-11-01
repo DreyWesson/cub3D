@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 09:22:23 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/26 10:05:52 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/11/01 01:15:11 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 int	ft_atoi(const char *str)
 {
@@ -40,7 +41,7 @@ int	ft_atoi(const char *str)
 
 // int	main(int argc, char *argv[])
 // {
-// 	printf("%d\n", argc);
+// 	(void)argc;
 // 	if (argc > 1)
 // 		printf("%i", ft_atoi(argv[1]));
 // 	return (0);

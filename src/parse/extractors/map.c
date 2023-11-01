@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:53:04 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/14 11:55:31 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/11/01 00:03:49 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ static int	count_map_lines(t_data *data, char **file, int i)
 static int	save_map_data(t_data *data, char **cub_file, int i)
 {
 	data->map_height = count_map_lines(data, cub_file, i);
-	data->map = malloc(sizeof(char *) * (data->map_height + 1));
+	data->map = ft_calloc(sizeof(char *), (data->map_height + 1));
 	if (!data->map)
 		return (ft_error("Malloc failed"), FAILURE);
 	if (map_to_2d(data, data->map, i) == FAILURE)

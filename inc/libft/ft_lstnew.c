@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 19:03:21 by doduwole          #+#    #+#             */
-/*   Updated: 2023/01/16 16:03:26 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/11/01 00:02:10 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_list	*ft_lstnew(void *content)
 {
 	t_list	*head;
 
-	head = (t_list *)malloc(sizeof(t_list));
+	head = (t_list *)ft_calloc(sizeof(t_list), 1);
 	if (!head)
 		return (NULL);
 	head->content = content;

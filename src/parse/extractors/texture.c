@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:52:22 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/10 22:19:52 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/11/01 00:03:19 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static char	*add_tex_path(char *line, int j)
 	len = j;
 	while (line[len] && !ft_isspace(line[j]))
 		len++;
-	path = malloc(sizeof(char) * (len - j + 1));
+	path = ft_calloc(sizeof(char), (len - j + 1));
 	if (!path)
 		return (NULL);
 	i = 0;

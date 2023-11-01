@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 16:06:07 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/12 18:19:29 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/11/01 00:02:47 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	*add_rgb(char *line)
 		return (free_array_2d((void **)rgb_to_convert), NULL);
 	if (col_only_digits(rgb_to_convert) == 0)
 		return (free_array_2d((void **)rgb_to_convert), NULL);
-	rgb = malloc(sizeof(int) * 3);
+	rgb = ft_calloc(sizeof(int), 3);
 	if (!rgb)
 		return (ft_error("Malloc failed"), NULL);
 	return (convert_and_add_rgb(rgb_to_convert, rgb));

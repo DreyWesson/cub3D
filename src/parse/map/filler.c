@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   filler.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 20:35:16 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/12 15:40:50 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/11/01 00:04:14 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	make_map_rectangular(t_data *data)
 	i = 0;
 	while (i < data->map_height)
 	{
-		line = (char *)malloc(sizeof(char) * (data->map_width + 1));
+		line = (char *)ft_calloc(sizeof(char), (data->map_width + 1));
 		if (!line)
 		{
 			ft_error("Malloc failed");

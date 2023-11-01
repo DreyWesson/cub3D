@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/14 14:31:11 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/11/01 00:33:07 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ void				make_map_rectangular(t_data *data);
 int					dfs(t_data *data, char **map_clone);
 int					flood_fill(char **tab, t_point size, int x, int y);
 // ****** init_data2 *******
-void				init_data2(t_data *data);
+void				init_data(t_data *data);
 // ****** extractions *******
 int					retrieve_file_data(t_data *data, char **cub_file);
 int					set_textures(t_data *data, char *line, int j);

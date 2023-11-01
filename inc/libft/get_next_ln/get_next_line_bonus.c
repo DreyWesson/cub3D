@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 20:04:49 by doduwole          #+#    #+#             */
-/*   Updated: 2023/04/24 23:50:22 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/10/31 23:57:45 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char	*get_next_line_bn(int fd)
 
 	if (fd == -1 || BUFFER_SIZE < 1)
 		return (NULL);
-	chunk = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	chunk = ft_calloc(sizeof(char), (BUFFER_SIZE + 1));
 	size = read(fd, chunk, BUFFER_SIZE);
 	if (size == -1 || !chunk)
 	{
