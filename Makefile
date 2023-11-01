@@ -6,11 +6,11 @@
 #    By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 13:21:00 by doduwole          #+#    #+#              #
-#    Updated: 2023/11/01 01:16:44 by doduwole         ###   ########.fr        #
+#    Updated: 2023/11/01 11:08:52 by doduwole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cub3d
+NAME = cub3D
 
 SRC =	$(wildcard main.c src/*.c src/*/*.c src/*/*/*.c src/*/*/*/*.c)
 
@@ -24,7 +24,7 @@ INC_DIR = inc
 
 OBJS = $(SRC:%.c=$(OBJ_DIR)/%.o)
 
-CC = gcc -g -fsanitize=address 
+CC = gcc #-g -fsanitize=address 
 
 LIBFTDIR = ./inc/libft
 

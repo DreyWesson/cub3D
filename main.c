@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:27:01 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/01 00:32:02 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/11/01 11:14:18 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	main(int argc, char **argv)
 		// initialize the game
 		// load the images
 		// initialize mlx and window
-		
 	free_data(&data);
 	return (0);
 }

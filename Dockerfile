@@ -14,7 +14,8 @@ RUN apt-get update && \
     libffi-dev \
     liblzma-dev \
     libbz2-dev \
-    zsh
+    zsh \
+    git
 
 # Set the default shell to zsh
 SHELL ["/bin/zsh", "-c"]

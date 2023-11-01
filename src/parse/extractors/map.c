@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:53:04 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/01 00:03:49 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/11/01 11:47:17 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,15 @@ static int	map_to_2d(t_data *data, char **map, int index)
 		while (data->cub_file[index][j] && data->cub_file[index][j] != '\n')
 		{
 			/// @note can check for tabs here rather than no_tabs func
+			// if (data->cub_file[index][j] == '\t')
+			// {
+			// 	map[i] = NULL;
+			// 	return (ft_error("Map: Tab instead of space"), FAILURE);
+			// }
 			if (data->cub_file[index][j] == '\t')
-			{
-				map[i] = NULL;
-				return (ft_error("Map: Tab instead of space"), FAILURE);
-			}
-			map[i][j] = data->cub_file[index][j];
+				map[i][j] = '0';
+			else
+				map[i][j] = data->cub_file[index][j];
 			j++;
 		}
 		i++;
