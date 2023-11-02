@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/01 00:33:07 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/11/02 01:38:43 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@
 #  include "../minilibx-linux/mlx.h"
 # endif
 
-
+# define WIN_WIDTH 1200
+# define WIN_HEIGHT 900
+# define TILE_WIDTH  128
+# define TILE_HEIGHT 128
 # define DEBUG 0
 
 enum				e_status
@@ -38,14 +41,23 @@ enum				e_status
 	TEXTURE_ADDED = 1
 };
 
-typedef struct s_wall_img
+enum e_tex_idx
 {
-	void	*blocks;
-	void	*north;
-	void	*east;
-	void	*south;
-	void	*west;
-}	t_wall_img;
+	NORTH = 0,
+	SOUTH = 1,
+	EAST = 2,
+	WEST = 3
+};
+
+typedef struct s_img
+{
+	void	*img;
+	int		*addr;
+	int		endian;
+	int		size_line;
+	int		pixel_bits;
+}	t_img;
+
 
 typedef struct s_point
 {
@@ -68,10 +80,20 @@ typedef struct s_data
 	int				map_end_idx;
 
 	// ------- path to texture -------
-	char			*tex_north;
-	char			*tex_east;
-	char			*tex_south;
-	char			*tex_west;
+	char			*north_tex;
+	char			*east_tex;
+	char			*south_tex;
+	char			*west_tex;
+	int		**textures;
+	int				tex_size;
+	int		**tex_pixels;
+		int		tex_x;
+	int		tex_y;
+
+	int		win_height;
+	int		win_width;
+	t_img image_details;
+
 
 	// ------- color related data -------
 	int				*col_ceiling;
@@ -142,4 +164,15 @@ int					add_colors(t_data *data, char *line, int j);
 int					add_map(t_data *data, char **cub_file, int i);
 // ****** debugger *******
 void				debugger(t_data *data);
+
+
+
+// BUILD GRAPHICS
+int game_init(t_data *data);
+int build_graphics(t_data *data);
+void	init_img_null(t_img *img);
+void	init_texture_pixels(t_data *data);
+void	init_texture_img(t_data *data, char *path);
+void	texture_init(t_data *data);
+
 #endif

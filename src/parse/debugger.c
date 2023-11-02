@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 11:07:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/12 18:52:27 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/11/02 00:28:36 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 void texture_data(t_data *data)
 {
 		printf("\033[1;33m""Saved textures:\n""\033[0m");
-		printf("South: %s\n", data->tex_south);
-		printf("North: %s\n", data->tex_north);
-		printf("West: %s\n", data->tex_west);
-		printf("East: %s\n", data->tex_east);
+		printf("South: %s\n", data->south_tex);
+		printf("North: %s\n", data->north_tex);
+		printf("West: %s\n", data->west_tex);
+		printf("East: %s\n", data->east_tex);
 		printf("\n");
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 22:06:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/10 22:19:19 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/11/02 00:32:53 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,25 +41,25 @@ void	free_cub(t_data *data)
 
 void	free_textures(t_data *data)
 {
-	if (data->tex_east)
+	if (data->east_tex)
 	{
-		free(data->tex_east);
-		data->tex_east = NULL;
+		free(data->east_tex);
+		data->east_tex = NULL;
 	}
-	if (data->tex_north)
+	if (data->north_tex)
 	{
-		free(data->tex_north);
-		data->tex_north = NULL;
+		free(data->north_tex);
+		data->north_tex = NULL;
 	}
-	if (data->tex_west)
+	if (data->west_tex)
 	{
-		free(data->tex_west);
-		data->tex_west = NULL;
+		free(data->west_tex);
+		data->west_tex = NULL;
 	}
-	if (data->tex_south)
+	if (data->south_tex)
 	{
-		free(data->tex_south);
-		data->tex_south = NULL;
+		free(data->south_tex);
+		data->south_tex = NULL;
 	}
 }
 

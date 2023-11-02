@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 21:25:55 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/31 12:36:01 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/11/02 00:34:52 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,17 @@ int	validate_xpm_file(char *filename)
 int	handle_xpm(t_data *data)
 {
 	return (
-		validate_xpm_file(data->tex_north) == FAILURE
-		|| validate_xpm_file(data->tex_east) == FAILURE
-		|| validate_xpm_file(data->tex_west) == FAILURE
-		|| validate_xpm_file(data->tex_south) == FAILURE
+		validate_xpm_file(data->north_tex) == FAILURE
+		|| validate_xpm_file(data->east_tex) == FAILURE
+		|| validate_xpm_file(data->west_tex) == FAILURE
+		|| validate_xpm_file(data->south_tex) == FAILURE
 	);
 }
 
 int	validate_textures(t_data *data)
 {
-	if (!data->tex_north || !data->tex_east || !data->tex_west
-		|| !data->tex_south)
+	if (!data->north_tex || !data->east_tex || !data->west_tex
+		|| !data->south_tex)
 		return (ft_error("Textures: Missing data"), FAILURE);
 	if (!data->col_floor || !data->col_ceiling)
 		return (ft_error("Color: Missing"), FAILURE);
