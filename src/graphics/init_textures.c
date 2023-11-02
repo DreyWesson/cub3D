@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 00:59:34 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/02 01:56:45 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/11/02 02:03:10 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	init_texture_img(t_data *data, char *path)
 			&data->tex_size);
 	if (data->image_details.img == NULL)
 	{
-		ft_error("=Malloc failed!");
+		ft_error("Malloc failed!");
 		clean_exit(data, FAILURE);
 	}
 	data->image_details.addr = (int *)mlx_get_data_addr(data->image_details.img, &data->image_details.pixel_bits,

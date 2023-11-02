@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/02 01:38:43 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/11/02 02:53:01 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,29 @@
 // MLX_LIB
 # ifdef __APPLE__
 #  include "../mlx/mlx.h"
+#  define W 13
+#  define A 0
+#  define S 1
+#  define D 2
+#  define ESC 53
+#  define ARROW_LEFT 123
+#  define ARROW_RIGHT 124
+#  define ARROW_DOWN 125
+#  define ARROW_UP 123
+
+
 # else
 #  include "../minilibx-linux/mlx.h"
+#  define W 119
+#  define A 97
+#  define S 115
+#  define D 100
+#  define ESC 65307
+#  define ARROW_LEFT 65361
+#  define ARROW_RIGHT 65363
+#  define X 33
 # endif
+
 
 # define WIN_WIDTH 1200
 # define WIN_HEIGHT 900
