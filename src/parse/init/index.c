@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oduwoledare <oduwoledare@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 21:30:39 by eramusho          #+#    #+#             */
-/*   Updated: 2023/11/02 01:30:18 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/11/03 22:31:52 by oduwoledare      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	init_file(t_data *data)
 
 void init_player(t_data *data)
 {
-		data->player_dir = 0;
+	data->player_dir = 0;
 	data->player_x = 0;
 	data->player_y = 0;
 }

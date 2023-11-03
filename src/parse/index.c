@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oduwoledare <oduwoledare@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 14:15:02 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/01 00:35:11 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/11/03 21:51:23 by oduwoledare      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	parsing(t_data *data, char **argv)
 		return (FAILURE);
 	if (validate_textures(data) == FAILURE)
 		return (FAILURE);
-	debugger(data);
+	// debugger(data);
 	// add_player_direction(data);
 	return (SUCCESS);
 }

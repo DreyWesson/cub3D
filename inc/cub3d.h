@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oduwoledare <oduwoledare@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/02 02:53:01 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/11/03 21:40:26 by oduwoledare      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,10 @@ typedef struct s_data
 	char			player_dir;
 	int				player_x;
 	int				player_y;
+	double 			player_view_y;
+	double 			player_view_x;
+	double 			player_plane_y;
+	double 			player_plane_x;
 
 	void			*mlx_ptr;
 	void			*mlx_win;

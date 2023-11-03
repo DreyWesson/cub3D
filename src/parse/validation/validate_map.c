@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oduwoledare <oduwoledare@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 21:19:03 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/14 12:40:43 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/11/03 22:38:46 by oduwoledare      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static int	check_map_is_at_the_end(t_data *data)
 	int	j;
 
 	i = data->map_end_idx;
-	printf("%d %d\n", data->map_end_idx, data->map_height);
 	while (data->cub_file[i])
 	{
 		j = 0;
@@ -60,6 +59,17 @@ static int	add_player_position(t_data *data, char **map)
 	return (SUCCESS);
 }
 
+int	set_player_dir(char dir)
+{
+	if (dir == 'N')
+		return (0);
+	else if (dir == 'S')
+		return (1);
+	else if (dir == 'E')
+		return (2);
+	return (3);
+}
+
 static int	check_map_elements(t_data *data, char **map)
 {
 	int	i;
@@ -79,7 +89,7 @@ static int	check_map_elements(t_data *data, char **map)
 			if (ft_strchr("NEWS", map[i][j]) && data->player_dir != '0')
 				return (ft_error("Map: Invalid map"), FAILURE);
 			if (ft_strchr("NEWS", map[i][j]) && data->player_dir == '0')
-				data->player_dir = map[i][j];
+				data->player_dir = set_player_dir(map[i][j]);
 			j++;
 		}
 		i++;
