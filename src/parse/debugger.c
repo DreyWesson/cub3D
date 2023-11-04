@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debugger.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oduwoledare <oduwoledare@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 11:07:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/02 00:28:36 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/11/04 11:03:15 by oduwoledare      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void player_data(t_data *data)
 {
 		printf("\033[1;33m""Player data:\n""\033[0m");
 		printf("player_dir: %c\n",
-			data->player_dir);
-		printf("player_x: %i\n", data->player_x);
-		printf("player_y: %i\n", data->player_y);
+			data->player.dir);
+		printf("player_x: %i\n", data->player.x);
+		printf("player_y: %i\n", data->player.y);
 		printf("\n");
 }
 

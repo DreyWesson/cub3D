@@ -6,7 +6,7 @@
 /*   By: oduwoledare <oduwoledare@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:27:01 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/03 22:52:10 by oduwoledare      ###   ########.fr       */
+/*   Updated: 2023/11/04 11:02:47 by oduwoledare      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,56 +29,56 @@ int	new_position(t_data *data, double x, double y)
 	int	next_x;
 	int	next_y;
 
-	next_x = data->player_x + x * 1.05;
-	next_y = data->player_y + y * 1.05;
-	if (!data->map[(int)(data->player_x + x)][(int)(data->player_y + y)] &&
+	next_x = data->player.x + x * 1.05;
+	next_y = data->player.y + y * 1.05;
+	if (!data->map[(int)(data->player.x + x)][(int)(data->player.y + y)] &&
 		!data->map[next_x][next_y])
 	{
-		data->player_x += x / 4;
-		data->player_y += y / 4;
+		data->player.x += x / 4;
+		data->player.y += y / 4;
 	}
-	else if (!data->map[(int)(data->player_x + x)][(int)(data->player_y)] &&
-		!data->map[next_x][(int)data->player_y])
-		data->player_x += x / 4;
-	else if (!data->map[(int)(data->player_x)][(int)(data->player_y + y)] &&
-		!data->map[(int)data->player_x][next_y])
-		data->player_y += y / 4;
+	else if (!data->map[(int)(data->player.x + x)][(int)(data->player.y)] &&
+		!data->map[next_x][(int)data->player.y])
+		data->player.x += x / 4;
+	else if (!data->map[(int)(data->player.x)][(int)(data->player.y + y)] &&
+		!data->map[(int)data->player.x][next_y])
+		data->player.y += y / 4;
 	return (0);
 }
 
 void	set_viewing_direction(t_data *data)
 {
-	if (data->player_dir == EAST || data->player_dir == WEST)
+	if (data->player.dir == EAST || data->player.dir == WEST)
 	{
-		data->player_view_x = 1;
-		data->player_view_y = 0;
-		if (data->player_dir == WEST)
-			data->player_view_x = -1;
+		data->player.view_x = 1;
+		data->player.view_y = 0;
+		if (data->player.dir == WEST)
+			data->player.view_x = -1;
 	}
 	else
 	{
-		data->player_view_x = 0;
-		data->player_view_y = -1;
-		if (data->player_dir == SOUTH)
-			data->player_view_y = 1;
+		data->player.view_x = 0;
+		data->player.view_y = -1;
+		if (data->player.dir == SOUTH)
+			data->player.view_y = 1;
 	}
 }
 
 void	set_camera_plane(t_data *data)
 {
-	if (data->player_dir == EAST || data->player_dir == WEST)
+	if (data->player.dir == EAST || data->player.dir == WEST)
 	{
-		data->player_plane_x = 0.0;
-		data->player_plane_y = 0.66;
-		if (data->player_dir == WEST)
-			data->player_plane_y = -0.66;
+		data->player.plane_x = 0.0;
+		data->player.plane_y = 0.66;
+		if (data->player.dir == WEST)
+			data->player.plane_y = -0.66;
 	}
 	else
 	{
-		data->player_plane_y = 0.0;
-		data->player_plane_x = 0.66;
-		if (data->player_dir == SOUTH)
-			data->player_plane_x = -0.66;
+		data->player.plane_y = 0.0;
+		data->player.plane_x = 0.66;
+		if (data->player.dir == SOUTH)
+			data->player.plane_x = -0.66;
 	}
 }
 
@@ -87,13 +87,14 @@ int	input(int key, t_data *data)
 	if (key == ESC)
 		end_program(data);
 	if (key == W)
-		new_position(data, data->player_view_x, data->player_view_y);
+		new_position(data, data->player.view_x, data->player.view_y);
 	if (key == A)
-		new_position(data, -data->player_plane_x, -data->player_plane_y);
+		new_position(data, -data->player.plane_x, -data->player.plane_y);
 	if (key == S)
-		new_position(data, -data->player_view_x, -data->player_view_y);
+		new_position(data, -data->player.view_x, -data->player.view_y);
 	if (key == D)
-		new_position(data, data->player_plane_x, data->player_plane_y);
+		new_position(data, data->player.plane_x, data->player.plane_y);
+	// ft_render(data);
 	return (0);
 }
 
@@ -110,7 +111,7 @@ int	main(int argc, char **argv)
 	build_graphics(&data);
 	set_viewing_direction(&data);
 	set_camera_plane(&data);
-	printf("player_dir: %c\nplayer_x: %d\nplayer_y: %d\nplayer_plane_x: %f\nplayer_plane_y: %f\nplayer_view_x: %f\nplayer_view_y: %f\n\n",data.player_dir, data.player_x, data.player_y, data.player_plane_x, data.player_plane_y, data.player_view_x, data.player_view_y);
+	printf("player_dir: %c\nplayer_x: %d\nplayer_y: %d\nplayer_plane_x: %f\nplayer_plane_y: %f\nplayer_view_x: %f\nplayer_view_y: %f\n\n",data.player.dir, data.player.x, data.player.y, data.player.plane_x, data.player.plane_y, data.player.view_x, data.player.view_y);
 	mlx_hook(data.mlx_win, 2, 0, input, (void *)&data);
 	mlx_hook(data.mlx_win, 17, 0, end_program, &data);
 	mlx_loop_hook(data.mlx_ptr, update, (void *)&data);

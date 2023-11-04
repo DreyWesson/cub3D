@@ -6,7 +6,7 @@
 /*   By: oduwoledare <oduwoledare@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/03 21:40:26 by oduwoledare      ###   ########.fr       */
+/*   Updated: 2023/11/04 11:00:25 by oduwoledare      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,17 @@ typedef struct s_point
 	int		y;
 }			t_point;
 
+typedef struct s_player
+{
+	char			dir;
+	int				x;
+	int				y;
+	double 			view_y;
+	double 			view_x;
+	double 			plane_y;
+	double 			plane_x;
+} t_player;
+
 typedef struct s_data
 {
 	// ------- saved .cub file -------
@@ -120,15 +131,18 @@ typedef struct s_data
 	int				*col_floor;
 	int				col_ceiling_int;
 	int				col_floor_int;
+	
+	
 
-	char			player_dir;
-	int				player_x;
-	int				player_y;
-	double 			player_view_y;
-	double 			player_view_x;
-	double 			player_plane_y;
-	double 			player_plane_x;
-
+	// char			player_dir;
+	// int				player_x;
+	// int				player_y;
+	// double 			player_view_y;
+	// double 			player_view_x;
+	// double 			player_plane_y;
+	// double 			player_plane_x;
+	t_player 			player;
+	
 	void			*mlx_ptr;
 	void			*mlx_win;
 }					t_data;

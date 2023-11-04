@@ -6,7 +6,7 @@
 /*   By: oduwoledare <oduwoledare@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 21:19:03 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/03 22:38:46 by oduwoledare      ###   ########.fr       */
+/*   Updated: 2023/11/04 11:04:16 by oduwoledare      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	add_player_position(t_data *data, char **map)
 	int	i;
 	int	j;
 
-	if (data->player_dir == '0')
+	if (data->player.dir == '0')
 		return (ft_error("Map: no player found"), FAILURE);
 	i = 0;
 	while (map[i])
@@ -48,8 +48,8 @@ static int	add_player_position(t_data *data, char **map)
 		{
 			if (ft_strchr("NEWS", map[i][j]))
 			{
-				data->player_x = j;
-				data->player_y = i;
+				data->player.x = j;
+				data->player.y = i;
 				map[i][j] = '0';
 			}
 			j++;
@@ -76,7 +76,7 @@ static int	check_map_elements(t_data *data, char **map)
 	int	j;
 
 	i = 0;
-	data->player_dir = '0';
+	data->player.dir = '0';
 	while (map[i] != NULL)
 	{
 		j = 0;
@@ -86,10 +86,10 @@ static int	check_map_elements(t_data *data, char **map)
 				j++;
 			if (!(ft_strchr("10NEWS", map[i][j])))
 				return (ft_error("Map: Invalid map"), FAILURE);
-			if (ft_strchr("NEWS", map[i][j]) && data->player_dir != '0')
+			if (ft_strchr("NEWS", map[i][j]) && data->player.dir != '0')
 				return (ft_error("Map: Invalid map"), FAILURE);
-			if (ft_strchr("NEWS", map[i][j]) && data->player_dir == '0')
-				data->player_dir = set_player_dir(map[i][j]);
+			if (ft_strchr("NEWS", map[i][j]) && data->player.dir == '0')
+				data->player.dir = set_player_dir(map[i][j]);
 			j++;
 		}
 		i++;

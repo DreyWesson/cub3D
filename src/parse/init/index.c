@@ -6,7 +6,7 @@
 /*   By: oduwoledare <oduwoledare@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 21:30:39 by eramusho          #+#    #+#             */
-/*   Updated: 2023/11/03 22:31:52 by oduwoledare      ###   ########.fr       */
+/*   Updated: 2023/11/04 11:03:40 by oduwoledare      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void	init_file(t_data *data)
 
 void init_player(t_data *data)
 {
-	data->player_dir = 0;
-	data->player_x = 0;
-	data->player_y = 0;
+	data->player.dir = 0;
+	data->player.x = 0;
+	data->player.y = 0;
 }
 
 void init_tex(t_data *data)
