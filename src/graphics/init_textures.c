@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
+/*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 00:59:34 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/02 02:03:10 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/11/07 14:58:51 by loandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,27 +33,38 @@ void	init_texture_pixels(t_data *data)
 	}
 }
 
-void	init_texture_img(t_data *data, char *path)
+// void	init_img_null(t_img *img)
+// {
+// 	img->img = NULL;
+// 	img->addr = NULL;
+// 	img->pixel_bits = 0;
+// 	img->size_line = 0;
+// 	img->endian = 0;
+// }
+
+void	init_texture_img(t_data *data, t_img *image_details, char *path)
 {
-	data->image_details.img = mlx_xpm_file_to_image(data->mlx_ptr, path, &data->tex_size,
-			&data->tex_size);
-	if (data->image_details.img == NULL)
+	ft_memset((void *)image_details, 0, sizeof(*image_details));
+	image_details->img = mlx_xpm_file_to_image(data->mlx_ptr, path, &data->tile_w,
+			&data->tile_h);
+	if (image_details->img == NULL)
 	{
 		ft_error("Malloc failed!");
 		clean_exit(data, FAILURE);
 	}
-	data->image_details.addr = (int *)mlx_get_data_addr(data->image_details.img, &data->image_details.pixel_bits,
-			&data->image_details.size_line, &data->image_details.endian);
+	image_details->addr = (int *)mlx_get_data_addr(image_details->img, &image_details->pixel_bits,
+			&image_details->size_line, &image_details->endian);
 }
 
 static int	*xpm_to_img(t_data *data, char *tex_path)
 {
+	t_img	tmp;
 	int		*buffer;
 	int		x;
 	int		y;
 
 	y = 0;
-	init_texture_img(data, tex_path);
+	init_texture_img(data, &tmp, tex_path);
     buffer = ft_calloc(sizeof(*buffer), data->tex_size * data->tex_size);
 	if (!buffer)
 		clean_exit(data, FAILURE);
@@ -63,12 +74,12 @@ static int	*xpm_to_img(t_data *data, char *tex_path)
 		while (x < data->tex_size)
 		{
 			buffer[y * data->tex_size + x]
-				= data->image_details.addr[y * data->tex_size + x];
+				= tmp.addr[y * data->tex_size + x];
 			++x;
 		}
 		y++;
 	}
-	mlx_destroy_image(data->mlx_ptr, data->image_details.img);
+	mlx_destroy_image(data->mlx_ptr, tmp.img);
 	return (buffer);
 }
 

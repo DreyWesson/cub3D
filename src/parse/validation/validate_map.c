@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oduwoledare <oduwoledare@student.42.fr>    +#+  +:+       +#+        */
+/*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 21:19:03 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/04 11:04:16 by oduwoledare      ###   ########.fr       */
+/*   Updated: 2023/11/07 14:04:54 by loandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,27 @@ static int	check_map_elements(t_data *data, char **map)
 	return (SUCCESS);
 }
 
+void set_map_to_default(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < data->map_height)
+	{
+		j = 0;
+		while (j < data->map_width)
+		{
+			if (data->map[i][j] == 'v')
+			{
+				data->map[i][j] = '0';
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
 int	validate_map(t_data *data, char **map)
 {
 	if (!data->map)
@@ -110,5 +131,6 @@ int	validate_map(t_data *data, char **map)
 	make_map_rectangular(data);
 	if (validate_walls(data) == FAILURE)
 		return (ft_error("Map: Should be surrounded by walls"), FAILURE);
+	set_map_to_default(data);
 	return (SUCCESS);
 }

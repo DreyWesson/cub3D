@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oduwoledare <oduwoledare@student.42.fr>    +#+  +:+       +#+        */
+/*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/04 11:00:25 by oduwoledare      ###   ########.fr       */
+/*   Updated: 2023/11/07 14:57:23 by loandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@
 
 # define WIN_WIDTH 1200
 # define WIN_HEIGHT 900
-# define TILE_WIDTH  128
-# define TILE_HEIGHT 128
+# define TILE_W  128
+# define TILE_H 128
 # define DEBUG 0
 
 enum				e_status
@@ -123,7 +123,7 @@ typedef struct s_data
 
 	int		win_height;
 	int		win_width;
-	t_img image_details;
+	//t_img image_details;
 
 
 	// ------- color related data -------
@@ -145,6 +145,8 @@ typedef struct s_data
 	
 	void			*mlx_ptr;
 	void			*mlx_win;
+	int				tile_w;
+	int 			tile_h;
 }					t_data;
 
 /**
@@ -210,7 +212,7 @@ int game_init(t_data *data);
 int build_graphics(t_data *data);
 void	init_img_null(t_img *img);
 void	init_texture_pixels(t_data *data);
-void	init_texture_img(t_data *data, char *path);
 void	texture_init(t_data *data);
+void	init_texture_img(t_data *data, t_img *image_details, char *path);
 
 #endif

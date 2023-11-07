@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
+/*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 12:39:39 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/02 01:03:59 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/11/07 15:00:15 by loandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,6 @@ int build_graphics(t_data *data)
 {
 	game_init(data);
 	texture_init(data);
+	//renderfunc();
 	return (1);
 }
