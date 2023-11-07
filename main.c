@@ -6,7 +6,7 @@
 /*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:27:01 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/07 15:04:52 by loandrad         ###   ########.fr       */
+/*   Updated: 2023/11/07 15:22:08 by loandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,24 +75,43 @@ int	end_program(t_data *data)
 	return (0);
 }
 
-int	input(int key, t_data *data)
+static int	key_release_handler(int key, t_data *data)
 {
-	(void)key;
-	(void)data;
-	// if (key == ESC)
-	// 	end_program(data);
-	// if (key == W)
-	// 	new_position(data, data->player.view_x, data->player.view_y);
-	// if (key == A)
-	// 	new_position(data, -data->player.plane_x, -data->player.plane_y);
-	// if (key == S)
-	// 	new_position(data, -data->player.view_x, -data->player.view_y);
-	// if (key == D)
-	// 	new_position(data, data->player.plane_x, data->player.plane_y);
-	// // ft_render(data);
+	if (key == ESC)
+		end_program(data);
+	if (key == W && data->player.move_y == 1)
+		data->player.move_y = 0;
+	if (key == S && data->player.move_y == -1)
+		data->player.move_y = 0;
+	if (key == A && data->player.move_x == -1)
+		data->player.move_x += 1;
+	if (key == D && data->player.move_x == 1)
+		data->player.move_x -= 1;
+	if (key == ARROW_LEFT && data->player.rotate <= 1)
+		data->player.rotate = 0;
+	if (key == ARROW_RIGHT && data->player.rotate >= -1)
+		data->player.rotate = 0;
 	return (0);
 }
 
+static int	key_press_handler(int key, t_data *data)
+{
+	if (key == ESC)
+		end_program(data);
+	if (key == ARROW_LEFT)
+		data->player.rotate -= 1;
+	if (key == ARROW_RIGHT)
+		data->player.rotate += 1;
+	if (key == W)
+		data->player.move_y = 1;
+	if (key == A)
+		data->player.move_x = -1;
+	if (key == S)
+		data->player.move_y = -1;
+	if (key == D)
+		data->player.move_x = 1;
+	return (0);
+}
 
 int	main(int argc, char **argv)
 {
@@ -104,7 +123,9 @@ int	main(int argc, char **argv)
 	if (parsing(&data, argv) == FAILURE)
 		return (free_data(&data), FAILURE);
 	build_graphics(&data);
-	mlx_hook(data.mlx_win, 2, 0, input, (void *)&data);
+	mlx_hook(data.mlx_win, 2, 1L << 0, key_press_handler, &data);
+	mlx_hook(data.mlx_win, 3, 1L << 1, key_release_handler, &data);
+	// mlx_hook(data.mlx_win, 2, 0, input, (void *)&data);
 	mlx_hook(data.mlx_win, 17, 0, end_program, &data);
 	mlx_loop_hook(data.mlx_ptr, update, (void *)&data);
 	mlx_loop(data.mlx_ptr);

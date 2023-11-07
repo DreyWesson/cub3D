@@ -6,7 +6,7 @@
 /*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/07 14:57:23 by loandrad         ###   ########.fr       */
+/*   Updated: 2023/11/07 15:15:29 by loandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,17 @@ typedef struct s_player
 	char			dir;
 	int				x;
 	int				y;
-	double 			view_y;
-	double 			view_x;
-	double 			plane_y;
-	double 			plane_x;
+	double			pos_y;
+	double			pos_x;
+	double			dir_x;
+	double			dir_y;
+	double			plane_x;
+	double			plane_y;
+	int				move_x;
+	int				move_y;
+	int				rotate;
+	int				has_moved;
+
 } t_player;
 
 typedef struct s_data
@@ -131,18 +138,7 @@ typedef struct s_data
 	int				*col_floor;
 	int				col_ceiling_int;
 	int				col_floor_int;
-	
-	
-
-	// char			player_dir;
-	// int				player_x;
-	// int				player_y;
-	// double 			player_view_y;
-	// double 			player_view_x;
-	// double 			player_plane_y;
-	// double 			player_plane_x;
-	t_player 			player;
-	
+	t_player 		player;
 	void			*mlx_ptr;
 	void			*mlx_win;
 	int				tile_w;
