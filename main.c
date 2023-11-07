@@ -6,7 +6,7 @@
 /*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:27:01 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/07 15:22:08 by loandrad         ###   ########.fr       */
+/*   Updated: 2023/11/07 15:26:41 by loandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,14 @@ static int	key_press_handler(int key, t_data *data)
 	return (0);
 }
 
+int build_graphics(t_data *data)
+{
+	game_init(data);
+	texture_init(data);
+	//render_images();
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	data;
@@ -129,5 +137,5 @@ int	main(int argc, char **argv)
 	mlx_hook(data.mlx_win, 17, 0, end_program, &data);
 	mlx_loop_hook(data.mlx_ptr, update, (void *)&data);
 	mlx_loop(data.mlx_ptr);
-	return (0);
+	return (free_data(&data), SUCCESS);
 }
