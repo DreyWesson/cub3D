@@ -6,7 +6,7 @@
 /*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:27:01 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/08 13:24:47 by loandrad         ###   ########.fr       */
+/*   Updated: 2023/11/08 13:57:25 by loandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void all_data(t_data *data)
 	printf("data->textures: %d\n", data->textures[2][0]);
 	printf("data->textures: %d\n", data->textures[3][0]);
 	printf("data->tex_size: %d\n", data->tex_size);
-	printf("data->tex_pixel former_impl\n");
 	printf("data->tex_x: %d\n",data->tex_x);
 	printf("data->tex_y: %d\n",data->tex_y);
 	printf("\n");
@@ -422,6 +421,7 @@ void	render_images(t_data *data)
 {
 	init_texture_pixels(data);
 	ft_memset((void *)&data->ray, 0, sizeof(data->ray));
+	all_data(data);
 	raycasting(data);
 	render_frame(data);
 }
