@@ -6,7 +6,7 @@
 /*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 21:19:03 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/07 14:04:54 by loandrad         ###   ########.fr       */
+/*   Updated: 2023/11/08 13:18:45 by loandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ static int	add_player_position(t_data *data, char **map)
 			{
 				data->player.x = j;
 				data->player.y = i;
+				data->player.pos_x = (double)j + 0.5;
+				data->player.pos_y = (double)i + 0.5;
 				map[i][j] = '0';
 			}
 			j++;
@@ -57,17 +59,6 @@ static int	add_player_position(t_data *data, char **map)
 		i++;
 	}
 	return (SUCCESS);
-}
-
-int	set_player_dir(char dir)
-{
-	if (dir == 'N')
-		return (0);
-	else if (dir == 'S')
-		return (1);
-	else if (dir == 'E')
-		return (2);
-	return (3);
 }
 
 static int	check_map_elements(t_data *data, char **map)
@@ -89,7 +80,7 @@ static int	check_map_elements(t_data *data, char **map)
 			if (ft_strchr("NEWS", map[i][j]) && data->player.dir != '0')
 				return (ft_error("Map: Invalid map"), FAILURE);
 			if (ft_strchr("NEWS", map[i][j]) && data->player.dir == '0')
-				data->player.dir = set_player_dir(map[i][j]);
+				data->player.dir = map[i][j];
 			j++;
 		}
 		i++;

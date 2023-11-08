@@ -6,7 +6,7 @@
 /*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 00:59:34 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/07 14:58:51 by loandrad         ###   ########.fr       */
+/*   Updated: 2023/11/08 12:26:54 by loandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,6 @@ void	init_texture_pixels(t_data *data)
 	}
 }
 
-// void	init_img_null(t_img *img)
-// {
-// 	img->img = NULL;
-// 	img->addr = NULL;
-// 	img->pixel_bits = 0;
-// 	img->size_line = 0;
-// 	img->endian = 0;
-// }
-
 void	init_texture_img(t_data *data, t_img *image_details, char *path)
 {
 	ft_memset((void *)image_details, 0, sizeof(*image_details));
@@ -65,16 +56,16 @@ static int	*xpm_to_img(t_data *data, char *tex_path)
 
 	y = 0;
 	init_texture_img(data, &tmp, tex_path);
-    buffer = ft_calloc(sizeof(*buffer), data->tex_size * data->tex_size);
+    buffer = ft_calloc(sizeof(*buffer), data->tile_h * data->tile_w);
 	if (!buffer)
 		clean_exit(data, FAILURE);
-	while (y < data->tex_size)
+	while (y < data->tile_h)
 	{
 		x = 0;
-		while (x < data->tex_size)
+		while (x < data->tile_w)
 		{
-			buffer[y * data->tex_size + x]
-				= tmp.addr[y * data->tex_size + x];
+			buffer[y * data->tile_w + x]
+				= tmp.addr[y * data->tile_w + x];
 			++x;
 		}
 		y++;

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+         #
+#    By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 13:21:00 by doduwole          #+#    #+#              #
-#    Updated: 2023/11/01 11:08:52 by doduwole         ###   ########.fr        #
+#    Updated: 2023/11/08 13:30:37 by loandrad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,20 +66,20 @@ $(OBJ_DIR)/%.o: %.c $(LIBFTA)
 	@$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
 $(MLX):
-	@make -C $(MLX_DIR)
+	@make -C $(MLX_DIR) &> /dev/null
 
 $(LIBFTA):
-	@make all -C $(LIBFTDIR)
+	@make all -C $(LIBFTDIR) &> /dev/null
 
 clean:
 	@$(RM) $(OBJS) $(OBJ_DIR)
-	@make -C $(LIBFTDIR) clean
-	@make -C $(MLX_DIR) clean
+	@make -C $(LIBFTDIR) clean &> /dev/null
+	@make -C $(MLX_DIR) clean &> /dev/null
 	@echo $(CURSIVE)$(GRAY) "     - Object files removed" $(NONE)
 
 fclean: clean
-	@rm -f $(NAME)
-	@make -C $(LIBFTDIR) fclean
+	@rm -f $(NAME) &> /dev/null
+	@make -C $(LIBFTDIR) fclean &> /dev/null
 	@echo $(CURSIVE)$(GRAY) "     - $(NAME) removed" $(NONE)
 
 re: fclean all

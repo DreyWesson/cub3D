@@ -6,7 +6,7 @@
 /*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/07 15:15:29 by loandrad         ###   ########.fr       */
+/*   Updated: 2023/11/08 11:46:59 by loandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@
 # define TILE_W  128
 # define TILE_H 128
 # define DEBUG 0
+# define MOVESPEED 0.0275
+# define ROTSPEED 0.015
 
 enum				e_status
 {
@@ -100,8 +102,28 @@ typedef struct s_player
 	int				move_y;
 	int				rotate;
 	int				has_moved;
-
 } t_player;
+
+typedef struct s_ray
+{
+	double	camera_x;
+	double	dir_x;
+	double	dir_y;
+	int		map_x;
+	int		map_y;
+	int		step_x;
+	int		step_y;
+	double	sidedist_x;
+	double	sidedist_y;
+	double	deltadist_x;
+	double	deltadist_y;
+	double	wall_dist;
+	double	wall_x;
+	int		side;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+}	t_ray;
 
 typedef struct s_data
 {
@@ -143,6 +165,10 @@ typedef struct s_data
 	void			*mlx_win;
 	int				tile_w;
 	int 			tile_h;
+	int		tex_index;
+	double	tex_step;
+	double	tex_pos;
+	t_ray	ray;
 }					t_data;
 
 /**
