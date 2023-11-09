@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cub4D
+NAME = cub3D
 
 SRC =	main.c \
 		src/graphics/index.c \
@@ -84,6 +84,7 @@ GREEN='\033[32m'
 GRAY='\033[2;37m'
 CURSIVE='\033[3m'
 WARNING='\033[33m'
+DANGER='\033[31m'
 
 all: $(NAME)
 
@@ -92,16 +93,16 @@ $(NAME): $(LIBFTA) $(MLX) $(SRC) $(OBJS)
 	@echo $(GREEN)"- Compiled -"$(NONE)
 
 $(OBJ_DIR)/%.o: %.c $(LIBFTA)
-	@echo $(CURSIVE)$(GRAY) "     - Building $<" $(NONE)
+	@echo $(CURSIVE) "     - Building $<"
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
 $(MLX):
-	@echo $(CURSIVE) "     - (Wait a sec...) Building $@"
+	@echo $(CURSIVE)$(WARNING) "     - (Wait a sec...) Building $@" $(NONE)
 	@make -C $(MLX_DIR) > /dev/null 2>&1 || true
 
 $(LIBFTA):
-	@echo $(CURSIVE) "     - (Wait a sec...) Building $@"
+	@echo $(CURSIVE)$(WARNING) "     - (Wait a sec...) Building $@" $(NONE)
 	@make all -C $(LIBFTDIR) > /dev/null || true
 
 clean:
