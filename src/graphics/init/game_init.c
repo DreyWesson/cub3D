@@ -6,11 +6,11 @@
 /*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 01:00:58 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/07 14:50:29 by loandrad         ###   ########.fr       */
+/*   Updated: 2023/11/09 10:49:20 by loandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cub3d.h"
+#include "../../../inc/cub3d.h"
 
 int game_init(t_data *data)
 {

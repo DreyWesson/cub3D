@@ -1,37 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_textures.c                                    :+:      :+:    :+:   */
+/*   texture_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 00:59:34 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/08 12:26:54 by loandrad         ###   ########.fr       */
+/*   Updated: 2023/11/09 10:49:12 by loandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cub3d.h"
-
-void	init_texture_pixels(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	if (data->tex_pixels)
-		free_array_2d((void **)data->tex_pixels);
-	data->tex_pixels = ft_calloc(data->win_height + 1,
-			sizeof * data->tex_pixels);
-	if (!data->tex_pixels)
-		clean_exit(data, FAILURE);
-	while (i < data->win_height)
-	{
-		data->tex_pixels[i] = ft_calloc(data->win_width + 1,
-				sizeof * data->tex_pixels);
-		if (!data->tex_pixels[i])
-			clean_exit(data, FAILURE);
-		i++;
-	}
-}
+#include "../../../inc/cub3d.h"
 
 void	init_texture_img(t_data *data, t_img *image_details, char *path)
 {

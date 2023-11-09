@@ -5,24 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/13 12:39:39 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/09 11:09:01 by loandrad         ###   ########.fr       */
+/*   Created: 2023/11/09 11:04:09 by loandrad          #+#    #+#             */
+/*   Updated: 2023/11/09 11:06:09 by loandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cub3d.h"
+#include "../../../inc/cub3d.h"
 
-int	end_program(t_data *data)
+int	update(t_data *data)
 {
-	clean_exit(data, 0);
+	data->player.has_moved += move_player(data);
+	if (data->player.has_moved == 0)
+		return (0);
+	render_images(data);
 	return (0);
 }
-
-int build_graphics(t_data *data)
-{
-	game_init(data);
-	texture_init(data);
-	render_images(data);
-	return (1);
-}
-

@@ -6,13 +6,45 @@
 #    By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 13:21:00 by doduwole          #+#    #+#              #
-#    Updated: 2023/11/08 13:30:37 by loandrad         ###   ########.fr        #
+#    Updated: 2023/11/09 11:23:20 by loandrad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 
-SRC =	$(wildcard main.c src/*.c src/*/*.c src/*/*/*.c src/*/*/*/*.c)
+SRC =	main.c \
+		src/graphics/index.c \
+		src/graphics/input.c \
+		src/parse/debugger.c \
+		src/parse/index.c \
+		src/graphics/init/game_init.c \
+		src/graphics/init/texture_init.c \
+		src/graphics/render_image/frames.c \
+		src/graphics/render_image/helper.c \
+		src/graphics/render_image/index.c \
+		src/graphics/render_image/raycasting.c \
+		src/graphics/update/helper.c \
+		src/graphics/update/index.c \
+		src/graphics/update/moves.c \
+		src/graphics/update/rotate.c \
+		src/parse/extractors/color.c \
+		src/parse/extractors/index.c \
+		src/parse/extractors/map.c \
+		src/parse/extractors/texture.c \
+		src/parse/free/index.c \
+		src/parse/init/index.c \
+		src/parse/map/filler.c \
+		src/parse/map/map.c \
+		src/parse/map/search.c \
+		src/parse/printer/one.c \
+		src/parse/printer/two.c \
+		src/parse/utils/one.c \
+		src/parse/utils/three.c \
+		src/parse/utils/two.c \
+		src/parse/validation/validate_cub.c \
+		src/parse/validation/validate_map.c \
+		src/parse/validation/validate_texture.c \
+		src/parse/validation/validate_walls.c\
 
 RM = rm -rf
 
