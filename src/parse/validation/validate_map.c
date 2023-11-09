@@ -6,7 +6,7 @@
 /*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 21:19:03 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/09 12:16:31 by loandrad         ###   ########.fr       */
+/*   Updated: 2023/11/09 13:03:21 by loandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ static int	check_map_elements(t_data *data, char **map)
 	return (SUCCESS);
 }
 
-void set_map_to_default(t_data *data)
+void	set_map_to_default(t_data *data)
 {
 	int	i;
 	int	j;

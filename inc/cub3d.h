@@ -6,7 +6,7 @@
 /*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/09 12:33:33 by loandrad         ###   ########.fr       */
+/*   Updated: 2023/11/09 13:08:45 by loandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@
 #  define ARROW_DOWN 125
 #  define ARROW_UP 123
 
-
 # else
 #  include "../minilibx-linux/mlx.h"
 #  define W 119
@@ -46,7 +45,6 @@
 #  define ARROW_RIGHT 65363
 #  define X 33
 # endif
-
 
 # define WIN_WIDTH 1200
 # define WIN_HEIGHT 900
@@ -80,7 +78,6 @@ typedef struct s_img
 	int		pixel_bits;
 }	t_img;
 
-
 typedef struct s_point
 {
 	int		x;
@@ -102,7 +99,7 @@ typedef struct s_player
 	int				move_y;
 	int				rotate;
 	int				has_moved;
-} t_player;
+}	t_player;
 
 typedef struct s_ray
 {
@@ -127,49 +124,39 @@ typedef struct s_ray
 
 typedef struct s_data
 {
-	// ------- saved .cub file -------
 	char			**cub_file;
 	char			*cub_path;
 	int				cub_height;
 	int				cub_fd;
-
-	//  ****** rectangular map *******
 	char			**map;
 	int				map_height;
 	int				map_width;
 	int				map_end_idx;
-
-	// ------- path to texture -------
 	char			*north_tex;
 	char			*east_tex;
 	char			*south_tex;
 	char			*west_tex;
-	int		**textures;
+	int				**textures;
 	int				tex_size;
-	int		**tex_pixels;
-		int		tex_x;
-	int		tex_y;
-
-	int		win_height;
-	int		win_width;
-	//t_img image_details;
-
-
-	// ------- color related data -------
+	int				**tex_pixels;
+	int				tex_x;
+	int				tex_y;
+	int				win_height;
+	int				win_width;
 	int				*col_ceiling;
 	int				*col_floor;
 	int				col_ceiling_int;
 	int				col_floor_int;
-	t_player 		player;
+	t_player		player;
 	void			*mlx_ptr;
 	void			*mlx_win;
 	int				tile_w;
-	int 			tile_h;
-	int		tex_index;
-	double	tex_step;
-	double	tex_pos;
-	t_ray	ray;
-}					t_data;
+	int				tile_h;
+	int				tex_index;
+	double			tex_step;
+	double			tex_pos;
+	t_ray			ray;
+}	t_data;
 
 /**
  * ******** PARSING ************
@@ -208,7 +195,6 @@ void				free_colors(t_data *data);
 void				free_textures(t_data *data);
 void				free_cub(t_data *data);
 void				free_array_2d(void **array_2d);
-
 // ****** Map file *******
 void				handle_cub(char *cub_path, t_data *data);
 void				make_map_rectangular(t_data *data);
@@ -223,23 +209,20 @@ int					add_colors(t_data *data, char *line, int j);
 int					add_map(t_data *data, char **cub_file, int i);
 // ****** debugger *******
 void				debugger(t_data *data);
-
-
-
 // BUILD GRAPHICS
-int game_init(t_data *data);
-int build_graphics(t_data *data);
-void	texture_init(t_data *data);
-int	end_program(t_data *data);
-int	key_release_handler(int key, t_data *data);
-int	key_press_handler(int key, t_data *data);
-int	update(t_data *data);
-void	render_images(t_data *data);
-int	raycasting(t_data *data);
-void	render_frame(t_data *data);
-void	update_texture_pixels(t_data *data, t_ray *ray, int x);
-int	move_player(t_data *data);
-int	rotate_player(t_data *data, double rotdir);
-void	handle_compass(t_data *data);
+int					game_init(t_data *data);
+int					build_graphics(t_data *data);
+void				texture_init(t_data *data);
+int					end_program(t_data *data);
+int					key_release_handler(int key, t_data *data);
+int					key_press_handler(int key, t_data *data);
+int					update(t_data *data);
+void				render_images(t_data *data);
+int					raycasting(t_data *data);
+void				render_frame(t_data *data);
+void				update_texture_pixels(t_data *data, t_ray *ray, int x);
+int					move_player(t_data *data);
+int					rotate_player(t_data *data, double rotdir);
+void				handle_compass(t_data *data);
 
 #endif

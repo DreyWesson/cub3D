@@ -6,7 +6,7 @@
 /*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:05:52 by loandrad          #+#    #+#             */
-/*   Updated: 2023/11/09 12:36:00 by loandrad         ###   ########.fr       */
+/*   Updated: 2023/11/09 12:47:38 by loandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,20 +63,20 @@ int	move_player(t_data *data)
 	moved = 0;
 	if (data->player.move_y == 1)
 		moved += move_set(data,
-		data->player.pos_x + data->player.dir_x * MOVESPEED,
-		data->player.pos_y + data->player.dir_y * MOVESPEED);
+				data->player.pos_x + data->player.dir_x * MOVESPEED,
+				data->player.pos_y + data->player.dir_y * MOVESPEED);
 	if (data->player.move_y == -1)
 		moved += move_set(data,
-		data->player.pos_x - data->player.dir_x * MOVESPEED,
-		data->player.pos_y - data->player.dir_y * MOVESPEED);
+				data->player.pos_x - data->player.dir_x * MOVESPEED,
+				data->player.pos_y - data->player.dir_y * MOVESPEED);
 	if (data->player.move_x == -1)
 		moved += move_set(data,
-		data->player.pos_x + data->player.dir_y * MOVESPEED,
-		data->player.pos_y - data->player.dir_x * MOVESPEED);
+				data->player.pos_x + data->player.dir_y * MOVESPEED,
+				data->player.pos_y - data->player.dir_x * MOVESPEED);
 	if (data->player.move_x == 1)
 		moved += move_set(data,
-		data->player.pos_x - data->player.dir_y * MOVESPEED,
-		data->player.pos_y + data->player.dir_x * MOVESPEED);
+				data->player.pos_x - data->player.dir_y * MOVESPEED,
+				data->player.pos_y + data->player.dir_x * MOVESPEED);
 	if (data->player.rotate != 0)
 		moved += rotate_player(data, data->player.rotate);
 	return (moved);

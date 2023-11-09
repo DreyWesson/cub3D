@@ -6,7 +6,7 @@
 /*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:27:01 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/09 12:02:54 by loandrad         ###   ########.fr       */
+/*   Updated: 2023/11/09 13:04:33 by loandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 	t_data	data;
 
 	if (argc != 2)
-			return (ft_error("Wrong arguments - pass ./cub3d ./path_to_map"));
+		return (ft_error("Wrong arguments - pass ./cub3d ./path_to_map"));
 	ft_memset((void *)&data, 0, sizeof(data));
 	if (parsing(&data, argv) == FAILURE)
 		return (free_data(&data), FAILURE);

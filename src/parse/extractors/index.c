@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
+/*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:22:39 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/14 11:30:47 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/11/09 12:50:08 by loandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ static int	handle_extraction(t_data *data, char **cub_file, int i, int j)
 
 int	retrieve_file_data(t_data *data, char **cub_file)
 {
-	int i;
-	int j;
-	int status;
+	int	i;
+	int	j;
+	int	status;
 
 	i = 0;
 	while (cub_file[i])

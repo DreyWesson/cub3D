@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_texture.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
+/*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 21:25:55 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/02 00:34:52 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/11/09 13:25:42 by loandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static unsigned long	rgb_to_int(int *rgb_arr)
 	b = rgb_arr[2];
 	return (((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff));
 }
-
 
 int	validate_xpm_file(char *filename)
 {

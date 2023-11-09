@@ -6,7 +6,7 @@
 /*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 12:39:39 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/09 12:02:59 by loandrad         ###   ########.fr       */
+/*   Updated: 2023/11/09 12:39:30 by loandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	end_program(t_data *data)
 	return (0);
 }
 
-int build_graphics(t_data *data)
+int	build_graphics(t_data *data)
 {
 	handle_compass(data);
 	game_init(data);
@@ -26,4 +26,3 @@ int build_graphics(t_data *data)
 	render_images(data);
 	return (1);
 }
-
