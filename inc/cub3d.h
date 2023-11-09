@@ -6,7 +6,7 @@
 /*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/09 11:19:26 by loandrad         ###   ########.fr       */
+/*   Updated: 2023/11/09 12:00:47 by loandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,8 +208,7 @@ void				free_colors(t_data *data);
 void				free_textures(t_data *data);
 void				free_cub(t_data *data);
 void				free_array_2d(void **array_2d);
-// **** player dir *****
-// void				add_player_direction(t_data *data);
+
 // ****** Map file *******
 void				handle_cub(char *cub_path, t_data *data);
 void				map_reader(t_data *data);
@@ -245,5 +244,6 @@ void	update_texture_pixels(t_data *data, t_ray *ray, int x);
 int	move_player(t_data *data);
 int	validate_move(t_data *data, double new_x, double new_y);
 int	rotate_player(t_data *data, double rotdir);
+void	handle_compass(t_data *data);
 
 #endif

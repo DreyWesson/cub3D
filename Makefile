@@ -6,7 +6,7 @@
 #    By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 13:21:00 by doduwole          #+#    #+#              #
-#    Updated: 2023/11/09 11:23:20 by loandrad         ###   ########.fr        #
+#    Updated: 2023/11/09 12:03:40 by loandrad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRC =	main.c \
 		src/parse/index.c \
 		src/graphics/init/game_init.c \
 		src/graphics/init/texture_init.c \
+		src/graphics/init/compass_init.c \
 		src/graphics/render_image/frames.c \
 		src/graphics/render_image/helper.c \
 		src/graphics/render_image/index.c \
