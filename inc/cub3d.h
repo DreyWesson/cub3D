@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/09 13:08:45 by loandrad         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:58:39 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@
 #  define X 33
 # endif
 
-# define WIN_WIDTH 1200
-# define WIN_HEIGHT 900
+# define WIN_WIDTH 1920
+# define WIN_HEIGHT 1080
 # define TILE_W  128
 # define TILE_H 128
 # define DEBUG 0
@@ -71,158 +71,177 @@ enum e_tex_idx
 
 typedef struct s_img
 {
-	void	*img;
-	int		*addr;
-	int		endian;
-	int		size_line;
-	int		pixel_bits;
+	void		*img;
+	int			*addr;
+	int			endian;
+	int			size_line;
+	int			pixel_bits;
 }	t_img;
 
 typedef struct s_point
 {
-	int		x;
-	int		y;
+	int			x;
+	int			y;
 }			t_point;
 
 typedef struct s_player
 {
-	char			dir;
-	int				x;
-	int				y;
-	double			pos_y;
-	double			pos_x;
-	double			dir_x;
-	double			dir_y;
-	double			plane_x;
-	double			plane_y;
-	int				move_x;
-	int				move_y;
-	int				rotate;
-	int				has_moved;
+	char		dir;
+	int			x;
+	int			y;
+	double		pos_y;
+	double		pos_x;
+	double		dir_x;
+	double		dir_y;
+	double		plane_x;
+	double		plane_y;
+	int			move_x;
+	int			move_y;
+	int			rotate;
+	int			has_moved;
 }	t_player;
 
 typedef struct s_ray
 {
-	double	camera_x;
-	double	dir_x;
-	double	dir_y;
-	int		map_x;
-	int		map_y;
-	int		step_x;
-	int		step_y;
-	double	sidedist_x;
-	double	sidedist_y;
-	double	deltadist_x;
-	double	deltadist_y;
-	double	wall_dist;
-	double	wall_x;
-	int		side;
-	int		line_height;
-	int		draw_start;
-	int		draw_end;
+	double		camera_x;
+	double		dir_x;
+	double		dir_y;
+	int			map_x;
+	int			map_y;
+	int			step_x;
+	int			step_y;
+	double		sidedist_x;
+	double		sidedist_y;
+	double		deltadist_x;
+	double		deltadist_y;
+	double		wall_dist;
+	double		wall_x;
+	int			side;
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
 }	t_ray;
 
 typedef struct s_data
 {
-	char			**cub_file;
-	char			*cub_path;
-	int				cub_height;
-	int				cub_fd;
-	char			**map;
-	int				map_height;
-	int				map_width;
-	int				map_end_idx;
-	char			*north_tex;
-	char			*east_tex;
-	char			*south_tex;
-	char			*west_tex;
-	int				**textures;
-	int				tex_size;
-	int				**tex_pixels;
-	int				tex_x;
-	int				tex_y;
-	int				win_height;
-	int				win_width;
-	int				*col_ceiling;
-	int				*col_floor;
-	int				col_ceiling_int;
-	int				col_floor_int;
-	t_player		player;
-	void			*mlx_ptr;
-	void			*mlx_win;
-	int				tile_w;
-	int				tile_h;
-	int				tex_index;
-	double			tex_step;
-	double			tex_pos;
-	t_ray			ray;
+	char		**cub_file;
+	char		*cub_path;
+	int			cub_height;
+	int			cub_fd;
+	char		**map;
+	int			map_height;
+	int			map_width;
+	int			map_end_idx;
+	char		*north_tex;
+	char		*east_tex;
+	char		*south_tex;
+	char		*west_tex;
+	int			**textures;
+	int			tex_size;
+	int			**tex_pixels;
+	int			tex_x;
+	int			tex_y;
+	int			win_height;
+	int			win_width;
+	int			*col_ceiling;
+	int			*col_floor;
+	int			col_ceiling_int;
+	int			col_floor_int;
+	t_player	player;
+	void		*mlx_ptr;
+	void		*mlx_win;
+	int			tile_w;
+	int			tile_h;
+	int			tex_index;
+	double		tex_step;
+	double		tex_pos;
+	t_ray		ray;
 }	t_data;
 
 /**
- * ******** PARSING ************
+ * ******** PARSING  START ************
  */
-int					parsing(t_data *data, char **argv);
-// ***** Validations *******
-// int					is_valid_cub(char *str);
-int					is_valid_exe(char *str, char *exe);
-int					validate_map(t_data *data, char **map);
-int					validate_textures(t_data *data);
-int					validate_walls(t_data *data);
-// ******** Utils *********
-void				clean_exit(t_data *data, int exitstatus);
-void				check_fd(int fd);
-int					line_counter(char *file_name);
-size_t				ft_strlen_ln(const char *str);
-size_t				ft_strlen_no_newline(const char *str);
-size_t				find_max_width(t_data *data, int i);
-bool				ft_isspace(char c);
-bool				ft_isprint_no_space(int c);
-bool				is_texture_or_color(char c);
-bool				is_texture(char c1, char c2);
-int					is_last_char_one(const char *line);
-char				*ft_strdup2(const char *s1, int len);
-// ******** Prints *********
-int					ft_error(char *message);
-void				ft_err(char *message);
-void				print_grid(char **map, int row_nbr);
-void				print_array_2d(char **array_2d);
-void				print_array_2d_newline(char **array_2d);
-void				print_map(t_data *data, char *str);
-// ******** Free *********
-void				ft_free2d(char **ptr);
-void				free_data(t_data *data);
-void				free_colors(t_data *data);
-void				free_textures(t_data *data);
-void				free_cub(t_data *data);
-void				free_array_2d(void **array_2d);
-// ****** Map file *******
-void				handle_cub(char *cub_path, t_data *data);
-void				make_map_rectangular(t_data *data);
-// ****** Search *******
-int					flood_fill(char **tab, t_point size, int x, int y);
-// ****** init_data2 *******
-void				init_data(t_data *data);
-// ****** extractions *******
-int					retrieve_file_data(t_data *data, char **cub_file);
-int					set_textures(t_data *data, char *line, int j);
-int					add_colors(t_data *data, char *line, int j);
-int					add_map(t_data *data, char **cub_file, int i);
-// ****** debugger *******
-void				debugger(t_data *data);
-// BUILD GRAPHICS
-int					game_init(t_data *data);
-int					build_graphics(t_data *data);
-void				texture_init(t_data *data);
-int					end_program(t_data *data);
-int					key_release_handler(int key, t_data *data);
-int					key_press_handler(int key, t_data *data);
-int					update(t_data *data);
-void				render_images(t_data *data);
-int					raycasting(t_data *data);
-void				render_frame(t_data *data);
-void				update_texture_pixels(t_data *data, t_ray *ray, int x);
-int					move_player(t_data *data);
-int					rotate_player(t_data *data, double rotdir);
-void				handle_compass(t_data *data);
+int				parsing(t_data *data, char **argv);
+/**
+ * ******** EXTRACTORS ************
+ */
+int				add_colors(t_data *data, char *line, int j);
+int				retrieve_file_data(t_data *data, char **cub_file);
+int				add_map(t_data *data, char **cub_file, int i);
+int				add_textures(t_data *data, char *line, int j);
+/**
+ * ******** FREE ************
+ */
+void			free_data(t_data *data);
+void			free_colors(t_data *data);
+void			free_textures(t_data *data);
+void			free_cub(t_data *data);
+void			free_array_2d(void **array_2d);
+/**
+ * ******** MAPS ************
+ */
+void			init_data(t_data *data);
+/**
+ * ******** MAPS ************
+ */
+void			make_map_rectangular(t_data *data);
+void			handle_cub(char *cub_path, t_data *data);
+/**
+ * ******** PRINTER ************
+ */
+int				ft_error(char *message);
+void			ft_err(char *message);
+void			print_grid(char **map, int row_nbr);
+void			print_array_2d(char **array_2d);
+void			print_array_2d_newline(char **array_2d);
+void			print_map(t_data *data, char *str);
+void			print_all_data(t_data *data);
+/**
+ * ******** UTILS ************
+ */
+bool			ft_isspace(char c);
+bool			ft_isprint_no_space(int c);
+bool			is_texture_or_color(char c);
+bool			is_texture(char c1, char c2);
+int				is_last_char_one(const char *line);
+void			clean_exit(t_data *data, int exitstatus);
+char			*ft_strdup2(const char *s1, int len);
+void			check_fd(int fd);
+int				line_counter(char *file_name);
+size_t			ft_strlen_ln(const char *str);
+size_t			ft_strlen_no_newline(const char *str);
+size_t			find_max_width(t_data *data, int i);
+/**
+ * ******** VALIDATIONS ************
+ */
+int				is_valid_exe(char *str, char *exe);
+int				validate_map(t_data *data, char **map);
+int				validate_textures(t_data *data);
+int				validate_walls(t_data *data);
+int				flood_fill(char **tab, t_point size, int x, int y);
+/**
+ * ******** PARSING  END ************
+ */
+/**
+ * ******** BUILD GRAPHICS START ************
+ */
+void			handle_compass(t_data *data);
+int				game_init(t_data *data);
+void			texture_init(t_data *data);
+void			render_frame(t_data *data);
+void			update_texture_pixels(t_data *data, t_ray *ray, int x);
+void			render_images(t_data *data);
+int				raycasting(t_data *data);
+int				update(t_data *data);
+int				move_player(t_data *data);
+int				rotate_player(t_data *data, double rotdir);
+int				end_program(t_data *data);
+int				build_graphics(t_data *data);
+int				key_release_handler(int key, t_data *data);
+int				key_press_handler(int key, t_data *data);
+/**
+ * ******** BUILD GRAPHICS END ************
+ */
+void			debugger(t_data *data);
 
 #endif

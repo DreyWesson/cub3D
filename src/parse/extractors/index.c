@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:22:39 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/09 12:50:08 by loandrad         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:32:51 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	handle_extraction(t_data *data, char **cub_file, int i, int j)
 	{
 		if (is_texture(cub_file[i][j], cub_file[i][j + 1]))
 		{
-			if (set_textures(data, cub_file[i], j) == FAILURE)
+			if (add_textures(data, cub_file[i], j) == FAILURE)
 				return (FAILURE);
 		}
 		else

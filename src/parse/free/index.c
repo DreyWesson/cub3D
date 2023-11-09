@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 22:06:59 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/09 12:51:52 by loandrad         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:36:43 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,25 +42,17 @@ void	free_cub(t_data *data)
 void	free_textures(t_data *data)
 {
 	if (data->east_tex)
-	{
 		free(data->east_tex);
-		data->east_tex = NULL;
-	}
 	if (data->north_tex)
-	{
 		free(data->north_tex);
-		data->north_tex = NULL;
-	}
 	if (data->west_tex)
-	{
 		free(data->west_tex);
-		data->west_tex = NULL;
-	}
 	if (data->south_tex)
-	{
 		free(data->south_tex);
-		data->south_tex = NULL;
-	}
+	data->east_tex = NULL;
+	data->north_tex = NULL;
+	data->west_tex = NULL;
+	data->south_tex = NULL;
 }
 
 void	free_colors(t_data *data)

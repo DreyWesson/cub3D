@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_texture.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 21:25:55 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/09 13:25:42 by loandrad         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:49:57 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static unsigned long	rgb_to_int(int *rgb_arr)
 	return (((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff));
 }
 
-int	validate_xpm_file(char *filename)
+static int	validate_xpm_file(char *filename)
 {
 	int	fd;
 
@@ -37,7 +37,7 @@ int	validate_xpm_file(char *filename)
 	return (SUCCESS);
 }
 
-int	handle_xpm(t_data *data)
+static int	handle_xpm(t_data *data)
 {
 	return (
 		validate_xpm_file(data->north_tex) == FAILURE

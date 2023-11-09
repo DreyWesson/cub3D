@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:52:22 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/09 12:51:42 by loandrad         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:32:28 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static char	*add_tex_path(char *line, int j)
 	return (path);
 }
 
-int	set_textures(t_data *data, char *line, int j)
+int	add_textures(t_data *data, char *line, int j)
 {
 	if (line[j + 2] && ft_isprint_no_space(line[j + 2]))
 		return (ft_error("Textures: Invalid"), FAILURE);

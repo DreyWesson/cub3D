@@ -6,13 +6,13 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:54:45 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/11 19:20:04 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:48:02 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/cub3d.h"
 
-void	check_len(int len)
+static void	check_len(int len)
 {
 	if (len == 4)
 	{
@@ -35,7 +35,7 @@ static int	ft_char_in_set(char c, char const *set)
 	return (0);
 }
 
-int	ft_trim(char const *s1, char const *set)
+static int	ft_trim(char const *s1, char const *set)
 {
 	size_t	start;
 

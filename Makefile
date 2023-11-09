@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+         #
+#    By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 13:21:00 by doduwole          #+#    #+#              #
-#    Updated: 2023/11/09 12:34:42 by loandrad         ###   ########.fr        #
+#    Updated: 2023/11/09 14:02:04 by doduwole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,9 +97,11 @@ $(OBJ_DIR)/%.o: %.c $(LIBFTA)
 	@$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
 $(MLX):
+	@echo $(CURSIVE)$(GRAY) "     - (Wait a sec...) Building $@" $(NONE)
 	@make -C $(MLX_DIR) &> /dev/null
 
 $(LIBFTA):
+	@echo $(CURSIVE)$(GRAY) "     - (Wait a sec...) Building $@" $(NONE)
 	@make all -C $(LIBFTDIR) &> /dev/null
 
 clean:
