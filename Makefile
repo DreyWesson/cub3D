@@ -6,7 +6,7 @@
 #    By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 13:21:00 by doduwole          #+#    #+#              #
-#    Updated: 2023/11/09 12:13:59 by loandrad         ###   ########.fr        #
+#    Updated: 2023/11/09 12:34:42 by loandrad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,6 @@ SRC =	main.c \
 		src/graphics/render_image/helper.c \
 		src/graphics/render_image/index.c \
 		src/graphics/render_image/raycasting.c \
-		src/graphics/update/helper.c \
 		src/graphics/update/index.c \
 		src/graphics/update/moves.c \
 		src/graphics/update/rotate.c \

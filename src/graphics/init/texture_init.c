@@ -6,13 +6,13 @@
 /*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 00:59:34 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/09 10:49:12 by loandrad         ###   ########.fr       */
+/*   Updated: 2023/11/09 12:18:36 by loandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/cub3d.h"
 
-void	init_texture_img(t_data *data, t_img *image_details, char *path)
+static void	init_texture_img(t_data *data, t_img *image_details, char *path)
 {
 	ft_memset((void *)image_details, 0, sizeof(*image_details));
 	image_details->img = mlx_xpm_file_to_image(data->mlx_ptr, path, &data->tile_w,

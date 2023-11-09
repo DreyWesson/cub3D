@@ -6,7 +6,7 @@
 /*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/09 12:07:39 by loandrad         ###   ########.fr       */
+/*   Updated: 2023/11/09 12:33:33 by loandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,9 +229,7 @@ void				debugger(t_data *data);
 // BUILD GRAPHICS
 int game_init(t_data *data);
 int build_graphics(t_data *data);
-void	init_texture_pixels(t_data *data);
 void	texture_init(t_data *data);
-void	init_texture_img(t_data *data, t_img *image_details, char *path);
 int	end_program(t_data *data);
 int	key_release_handler(int key, t_data *data);
 int	key_press_handler(int key, t_data *data);
@@ -241,7 +239,6 @@ int	raycasting(t_data *data);
 void	render_frame(t_data *data);
 void	update_texture_pixels(t_data *data, t_ray *ray, int x);
 int	move_player(t_data *data);
-int	validate_move(t_data *data, double new_x, double new_y);
 int	rotate_player(t_data *data, double rotdir);
 void	handle_compass(t_data *data);
 

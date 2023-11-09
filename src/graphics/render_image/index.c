@@ -6,13 +6,13 @@
 /*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:46:59 by loandrad          #+#    #+#             */
-/*   Updated: 2023/11/09 10:51:48 by loandrad         ###   ########.fr       */
+/*   Updated: 2023/11/09 12:19:42 by loandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/cub3d.h"
 
-void	init_texture_pixels(t_data *data)
+static void	init_texture_pixels(t_data *data)
 {
 	int	i;
 
