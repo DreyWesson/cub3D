@@ -6,7 +6,7 @@
 /*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 21:19:03 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/08 13:18:45 by loandrad         ###   ########.fr       */
+/*   Updated: 2023/11/09 12:16:31 by loandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,7 @@ void set_map_to_default(t_data *data)
 		while (j < data->map_width)
 		{
 			if (data->map[i][j] == 'v')
-			{
 				data->map[i][j] = '0';
-			}
 			j++;
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/09 12:00:47 by loandrad         ###   ########.fr       */
+/*   Updated: 2023/11/09 12:07:39 by loandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,7 +211,6 @@ void				free_array_2d(void **array_2d);
 
 // ****** Map file *******
 void				handle_cub(char *cub_path, t_data *data);
-void				map_reader(t_data *data);
 void				make_map_rectangular(t_data *data);
 // ****** Search *******
 int					flood_fill(char **tab, t_point size, int x, int y);

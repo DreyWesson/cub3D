@@ -6,7 +6,7 @@
 #    By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 13:21:00 by doduwole          #+#    #+#              #
-#    Updated: 2023/11/09 12:03:40 by loandrad         ###   ########.fr        #
+#    Updated: 2023/11/09 12:13:59 by loandrad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,6 @@ SRC =	main.c \
 		src/parse/init/index.c \
 		src/parse/map/filler.c \
 		src/parse/map/map.c \
-		src/parse/map/search.c \
 		src/parse/printer/one.c \
 		src/parse/printer/two.c \
 		src/parse/utils/one.c \

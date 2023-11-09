@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
+/*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:07:25 by doduwole          #+#    #+#             */
-/*   Updated: 2023/10/12 16:36:34 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/11/09 12:07:45 by loandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/cub3d.h"
 
-int	open_file(char *filepath, t_data *data)
+static int	open_file(char *filepath, t_data *data)
 {
 	int	fd;
 
@@ -25,7 +25,7 @@ int	open_file(char *filepath, t_data *data)
 	return (fd);
 }
 
-void	init_map(char *cub_path, t_data *data)
+static void	init_map(char *cub_path, t_data *data)
 {
 	data->cub_height = line_counter(cub_path);
 	data->cub_file = ft_calloc(sizeof(char *), data->cub_height + 1);
@@ -35,7 +35,7 @@ void	init_map(char *cub_path, t_data *data)
 	data->cub_fd = open_file(cub_path, data);
 }
 
-void	map_reader(t_data *data)
+static void	map_reader(t_data *data)
 {
 	char	*line;
 	int		row;
