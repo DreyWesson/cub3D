@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cub3D
+NAME = cub4D
 
 SRC =	main.c \
 		src/graphics/index.c \
@@ -97,22 +97,22 @@ $(OBJ_DIR)/%.o: %.c $(LIBFTA)
 	@$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
 $(MLX):
-	@echo $(CURSIVE)$(GRAY) "     - (Wait a sec...) Building $@" $(NONE)
-	@make -C $(MLX_DIR) &> /dev/null
+	@echo $(CURSIVE) "     - (Wait a sec...) Building $@"
+	@make -C $(MLX_DIR) > /dev/null 2>&1 || true
 
 $(LIBFTA):
-	@echo $(CURSIVE)$(GRAY) "     - (Wait a sec...) Building $@" $(NONE)
-	@make all -C $(LIBFTDIR) &> /dev/null
+	@echo $(CURSIVE) "     - (Wait a sec...) Building $@"
+	@make all -C $(LIBFTDIR) > /dev/null || true
 
 clean:
 	@$(RM) $(OBJS) $(OBJ_DIR)
-	@make -C $(LIBFTDIR) clean &> /dev/null
-	@make -C $(MLX_DIR) clean &> /dev/null
+	@make -C $(LIBFTDIR) clean > /dev/null || true
+	@make -C $(MLX_DIR) clean > /dev/null || true
 	@echo $(CURSIVE)$(GRAY) "     - Object files removed" $(NONE)
 
 fclean: clean
-	@rm -f $(NAME) &> /dev/null
-	@make -C $(LIBFTDIR) fclean &> /dev/null
+	@rm -f $(NAME) > /dev/null || true
+	@make -C $(LIBFTDIR) fclean > /dev/null || true
 	@echo $(CURSIVE)$(GRAY) "     - $(NAME) removed" $(NONE)
 
 re: fclean all
