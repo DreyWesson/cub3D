@@ -6,7 +6,7 @@
 #    By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 13:21:00 by doduwole          #+#    #+#              #
-#    Updated: 2023/11/09 14:02:04 by doduwole         ###   ########.fr        #
+#    Updated: 2023/11/10 22:20:08 by doduwole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ INC_DIR = inc
 
 OBJS = $(SRC:%.c=$(OBJ_DIR)/%.o)
 
-CC = gcc #-g -fsanitize=address 
+CC = gcc -g -fsanitize=address 
 
 LIBFTDIR = ./inc/libft
 
