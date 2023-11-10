@@ -45,8 +45,8 @@
 #  define ARROW_RIGHT 65363
 # endif
 
-# define WIN_WIDTH 1920
-# define WIN_HEIGHT 1080
+# define WIN_WIDTH 1280
+# define WIN_HEIGHT 720
 # define TILE_W  128
 # define TILE_H 128
 # define DEBUG 0
