@@ -43,13 +43,12 @@
 #  define ESC 65307
 #  define ARROW_LEFT 65361
 #  define ARROW_RIGHT 65363
-#  define X 33
 # endif
 
 # define WIN_WIDTH 1920
 # define WIN_HEIGHT 1080
-# define TILE_W  64
-# define TILE_H 64
+# define TILE_W  128
+# define TILE_H 128
 # define DEBUG 0
 # define MOVESPEED 0.0275
 # define ROTSPEED 0.015

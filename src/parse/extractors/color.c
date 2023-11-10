@@ -12,7 +12,7 @@
 
 #include "../../../inc/cub3d.h"
 
-bool	no_digit_found(char *str)
+static bool	no_digit_found(char *str)
 {
 	int		i;
 	bool	status;
@@ -51,7 +51,7 @@ int	col_only_digits(char **map)
 	return (1);
 }
 
-int	*convert_and_add_rgb(char **rgb_to_convert, int *rgb)
+static int	*convert_and_add_rgb(char **rgb_to_convert, int *rgb)
 {
 	int	i;
 
@@ -71,7 +71,7 @@ int	*convert_and_add_rgb(char **rgb_to_convert, int *rgb)
 	return (rgb);
 }
 
-int	*add_rgb(char *line)
+static int	*add_rgb(char *line)
 {
 	char	**rgb_to_convert;
 	int		*rgb;
