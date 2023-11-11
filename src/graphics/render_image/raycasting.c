@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:51:10 by loandrad          #+#    #+#             */
-/*   Updated: 2023/11/11 23:10:53 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/11/11 23:37:40 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 static void	calc_line_height(t_ray *ray, t_data *data)
 {
 	if (ray->side == 0)
-		ray->wall_dist = (ray->sidedist_x - ray->deltadist_x);
+		ray->perp_wall_dist = (ray->side_dist_x - ray->delta_dist_x);
 	else
-		ray->wall_dist = (ray->sidedist_y - ray->deltadist_y);
-	ray->line_height = (int)(data->win_height / ray->wall_dist);
+		ray->perp_wall_dist = (ray->side_dist_y - ray->delta_dist_y);
+	ray->line_height = (int)(data->win_height / ray->perp_wall_dist);
 	ray->draw_start = -(ray->line_height) / 2 + data->win_height / 2;
 	if (ray->draw_start < 0)
 		ray->draw_start = 0;
@@ -26,37 +26,44 @@ static void	calc_line_height(t_ray *ray, t_data *data)
 	if (ray->draw_end >= data->win_height)
 		ray->draw_end = data->win_height - 1;
 	if (ray->side == 0)
-		ray->wall_x = data->player.pos_y + ray->wall_dist * ray->dir_y;
+		ray->wall_x = data->player.pos_y + ray->perp_wall_dist * ray->dir_y;
 	else
-		ray->wall_x = data->player.pos_x + ray->wall_dist * ray->dir_x;
+		ray->wall_x = data->player.pos_x + ray->perp_wall_dist * ray->dir_x;
 	ray->wall_x -= floor(ray->wall_x);
+}
+
+static int check_map_boundaries(t_data *data,t_ray *ray)
+{
+	if (ray->map_y < 0.25 || ray->map_x < 0.25
+		|| ray->map_y > data->map_height - 0.25
+		|| ray->map_x > data->map_width - 1.25)
+		return (1);
+	return (0);
 }
 
 static void	run_dda(t_data *data, t_ray *ray)
 {
-	int	hit;
+	int	hit_wall;
 
-	hit = 0;
-	while (hit == 0)
+	hit_wall = 0;
+	while (hit_wall == 0)
 	{
-		if (ray->sidedist_x < ray->sidedist_y)
+		if (ray->side_dist_x < ray->side_dist_y)
 		{
-			ray->sidedist_x += ray->deltadist_x;
+			ray->side_dist_x += ray->delta_dist_x;
 			ray->map_x += ray->step_x;
 			ray->side = 0;
 		}
 		else
 		{
-			ray->sidedist_y += ray->deltadist_y;
+			ray->side_dist_y += ray->delta_dist_y;
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (ray->map_y < 0.25 || ray->map_x < 0.25
-			|| ray->map_y > data->map_height - 0.25
-			|| ray->map_x > data->map_width - 1.25)
+		if (check_map_boundaries(data, ray))
 			break ;
 		else if (data->map[ray->map_y][ray->map_x] > '0')
-			hit = 1;
+			hit_wall = 1;
 	}
 }
 
@@ -65,24 +72,26 @@ static void	calc_step_and_init_side_dist(t_ray *ray, t_data *data)
 	if (ray->dir_x < 0)
 	{
 		ray->step_x = -1;
-		ray->sidedist_x = (data->player.pos_x - ray->map_x) * ray->deltadist_x;
+		ray->side_dist_x = (data->player.pos_x - ray->map_x)
+			* ray->delta_dist_x;
 	}
 	else
 	{
 		ray->step_x = 1;
-		ray->sidedist_x
-			= (ray->map_x + 1.0 - data->player.pos_x) * ray->deltadist_x;
+		ray->side_dist_x
+			= (ray->map_x + 1.0 - data->player.pos_x) * ray->delta_dist_x;
 	}
 	if (ray->dir_y < 0)
 	{
 		ray->step_y = -1;
-		ray->sidedist_y = (data->player.pos_y - ray->map_y) * ray->deltadist_y;
+		ray->side_dist_y = (data->player.pos_y - ray->map_y)
+			* ray->delta_dist_y;
 	}
 	else
 	{
 		ray->step_y = 1;
-		ray->sidedist_y
-			= (ray->map_y + 1.0 - data->player.pos_y) * ray->deltadist_y;
+		ray->side_dist_y
+			= (ray->map_y + 1.0 - data->player.pos_y) * ray->delta_dist_y;
 	}
 }
 
@@ -94,8 +103,8 @@ static void	init_ray_casting_info(int x, t_ray *ray, t_data *data)
 	ray->dir_y = data->player.dir_y + data->player.plane_y * ray->camera_x;
 	ray->map_x = (int)data->player.pos_x;
 	ray->map_y = (int)data->player.pos_y;
-	ray->deltadist_x = fabs(1 / ray->dir_x);
-	ray->deltadist_y = fabs(1 / ray->dir_y);
+	ray->delta_dist_x = fabs(1 / ray->dir_x);
+	ray->delta_dist_y = fabs(1 / ray->dir_y);
 }
 
 int	ray_casting(t_data *data)
