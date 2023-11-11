@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/10 21:29:24 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/11/11 23:09:29 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,7 +230,7 @@ void			texture_init(t_data *data);
 void			render_frame(t_data *data);
 void			update_texture_pixels(t_data *data, t_ray *ray, int x);
 void			render_images(t_data *data);
-int				raycasting(t_data *data);
+int				ray_casting(t_data *data);
 int				update(t_data *data);
 int				move_player(t_data *data);
 int				rotate_player(t_data *data, double rotdir);

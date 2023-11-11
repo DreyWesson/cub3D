@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:51:10 by loandrad          #+#    #+#             */
-/*   Updated: 2023/11/09 10:56:32 by loandrad         ###   ########.fr       */
+/*   Updated: 2023/11/11 23:10:53 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	run_dda(t_data *data, t_ray *ray)
 	}
 }
 
-static void	set_dda(t_ray *ray, t_data *data)
+static void	calc_step_and_init_side_dist(t_ray *ray, t_data *data)
 {
 	if (ray->dir_x < 0)
 	{
@@ -86,7 +86,7 @@ static void	set_dda(t_ray *ray, t_data *data)
 	}
 }
 
-static void	init_raycasting_info(int x, t_ray *ray, t_data *data)
+static void	init_ray_casting_info(int x, t_ray *ray, t_data *data)
 {
 	ft_memset((void *)&data->ray, 0, sizeof(data->ray));
 	ray->camera_x = 2 * x / (double)data->win_width - 1;
@@ -98,7 +98,7 @@ static void	init_raycasting_info(int x, t_ray *ray, t_data *data)
 	ray->deltadist_y = fabs(1 / ray->dir_y);
 }
 
-int	raycasting(t_data *data)
+int	ray_casting(t_data *data)
 {
 	t_ray	*ray;
 	int		x;
@@ -107,8 +107,8 @@ int	raycasting(t_data *data)
 	ray = &data->ray;
 	while (x < data->win_width)
 	{
-		init_raycasting_info(x, ray, data);
-		set_dda(ray, data);
+		init_ray_casting_info(x, ray, data);
+		calc_step_and_init_side_dist(ray, data);
 		run_dda(data, ray);
 		calc_line_height(ray, data);
 		update_texture_pixels(data, ray, x);

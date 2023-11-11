@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:46:59 by loandrad          #+#    #+#             */
-/*   Updated: 2023/11/09 12:19:42 by loandrad         ###   ########.fr       */
+/*   Updated: 2023/11/11 22:59:25 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ void	render_images(t_data *data)
 {
 	init_texture_pixels(data);
 	ft_memset((void *)&data->ray, 0, sizeof(data->ray));
-	raycasting(data);
+	ray_casting(data);
 	render_frame(data);
 }
