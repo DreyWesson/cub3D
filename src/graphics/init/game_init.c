@@ -16,16 +16,10 @@ int	game_init(t_data *data)
 {
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
-	{
-		ft_error("MLX failed to initialize!");
-		return (FAILURE);
-	}
+		return (ft_error("MLX failed to initialize!"), FAILURE);
 	data->mlx_win = mlx_new_window(data->mlx_ptr,
 			data->win_width, data->win_height, "Cub3D");
 	if (!data->mlx_win)
-	{
-		ft_error("MLX failed to initialize!");
-		return (FAILURE);
-	}
+		return (ft_error("MLX failed to initialize!"), FAILURE);
 	return (SUCCESS);
 }
