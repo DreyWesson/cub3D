@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helper.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
+/*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:56:51 by loandrad          #+#    #+#             */
-/*   Updated: 2023/11/12 01:19:32 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/11/12 17:02:10 by loandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ static void	set_texture_x_coord(t_data *data, t_ray *ray)
 			data->tex_index = NORTH;
 	}
 	data->tex_x = (int)(ray->wall_x * data->tex_size);
+	if (ray->side == 0 && ray->dir_x > 0)
+		data->tex_x = data->tile_w - data->tex_x - 1;
+	if (ray->side == 1 && ray->dir_y < 0)
+		data->tex_x = data->tile_w - data->tex_x - 1;
 }
 
 void	update_texture_pixels(t_data *data, t_ray *ray, int x)
