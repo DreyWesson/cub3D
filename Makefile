@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+         #
+#    By: oduwoledare <oduwoledare@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 13:21:00 by doduwole          #+#    #+#              #
-#    Updated: 2023/11/12 00:15:50 by doduwole         ###   ########.fr        #
+#    Updated: 2023/11/12 09:04:42 by oduwoledare      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,6 +86,8 @@ GRAY='\033[2;37m'
 CURSIVE='\033[3m'
 WARNING='\033[33m'
 DANGER='\033[31m'
+
+.DEFAULT_GOAL := all
 
 all: $(NAME)
 
