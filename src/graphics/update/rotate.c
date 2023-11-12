@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:08:03 by loandrad          #+#    #+#             */
-/*   Updated: 2023/11/09 11:08:29 by loandrad         ###   ########.fr       */
+/*   Updated: 2023/11/12 00:52:37 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	rotate_player(t_data *data, double rotdir)
 	double	rotspeed;
 
 	moved = 0;
-	rotspeed = ROTSPEED * rotdir;
+	rotspeed = ROT_SPEED * rotdir;
 	moved += rotate_left_right(data, rotspeed);
 	return (moved);
 }

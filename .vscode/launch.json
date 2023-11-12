@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/doduwole/Documents/cub3D",
-      "program": "/Users/doduwole/Documents/cub3D/build/Debug/outDebug"
+      "cwd": "/Users/oduwoledare/atoms/core/cub3D",
+      "program": "/Users/oduwoledare/atoms/core/cub3D/build/Debug/outDebug"
     }
   ]
 }

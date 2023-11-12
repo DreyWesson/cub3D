@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+         #
+#    By: oduwoledare <oduwoledare@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 13:21:00 by doduwole          #+#    #+#              #
-#    Updated: 2023/11/10 22:20:08 by doduwole         ###   ########.fr        #
+#    Updated: 2023/11/12 09:04:42 by oduwoledare      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC =	main.c \
 		src/graphics/init/compass_init.c \
 		src/graphics/render_image/frames.c \
 		src/graphics/render_image/helper.c \
+		src/graphics/render_image/helper_two.c \
 		src/graphics/render_image/index.c \
 		src/graphics/render_image/raycasting.c \
 		src/graphics/update/index.c \
@@ -85,6 +86,8 @@ GRAY='\033[2;37m'
 CURSIVE='\033[3m'
 WARNING='\033[33m'
 DANGER='\033[31m'
+
+.DEFAULT_GOAL := all
 
 all: $(NAME)
 

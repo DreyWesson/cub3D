@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:59:52 by loandrad          #+#    #+#             */
-/*   Updated: 2023/11/09 11:13:15 by loandrad         ###   ########.fr       */
+/*   Updated: 2023/11/12 00:43:31 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-int	key_release_handler(int key, t_data *data)
+int	key_release(int key, t_data *data)
 {
 	if (key == ESC)
 		end_program(data);
@@ -31,7 +31,7 @@ int	key_release_handler(int key, t_data *data)
 	return (0);
 }
 
-int	key_press_handler(int key, t_data *data)
+int	key_press(int key, t_data *data)
 {
 	if (key == ESC)
 		end_program(data);
