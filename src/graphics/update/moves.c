@@ -3,29 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:05:52 by loandrad          #+#    #+#             */
-/*   Updated: 2023/11/09 12:47:38 by loandrad         ###   ########.fr       */
+/*   Updated: 2023/11/12 01:17:33 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/cub3d.h"
 
-static bool	is_valid_pos_in_map(t_data *data, double x, double y)
-{
-	if (x < 0.25 || x >= data->map_width - 1.25)
-		return (false);
-	if (y < 0.25 || y >= data->map_height -0.25)
-		return (false);
-	return (true);
-}
-
 static bool	is_valid_pos(t_data *data, double x, double y)
 {
-	if (is_valid_pos_in_map(data, x, y))
-		return (true);
-	return (false);
+	if (x < 0.25 || x >= data->map_width - 1.25
+		|| y < 0.25 || y >= data->map_height -0.25)
+		return (false);
+	return (true);
 }
 
 static int	validate_move(t_data *data, double new_x, double new_y)
@@ -63,20 +55,20 @@ int	move_player(t_data *data)
 	moved = 0;
 	if (data->player.move_y == 1)
 		moved += move_set(data,
-				data->player.pos_x + data->player.dir_x * MOVESPEED,
-				data->player.pos_y + data->player.dir_y * MOVESPEED);
+				data->player.pos_x + data->player.dir_x * MOVE_SPEED,
+				data->player.pos_y + data->player.dir_y * MOVE_SPEED);
 	if (data->player.move_y == -1)
 		moved += move_set(data,
-				data->player.pos_x - data->player.dir_x * MOVESPEED,
-				data->player.pos_y - data->player.dir_y * MOVESPEED);
+				data->player.pos_x - data->player.dir_x * MOVE_SPEED,
+				data->player.pos_y - data->player.dir_y * MOVE_SPEED);
 	if (data->player.move_x == -1)
 		moved += move_set(data,
-				data->player.pos_x + data->player.dir_y * MOVESPEED,
-				data->player.pos_y - data->player.dir_x * MOVESPEED);
+				data->player.pos_x + data->player.dir_y * MOVE_SPEED,
+				data->player.pos_y - data->player.dir_x * MOVE_SPEED);
 	if (data->player.move_x == 1)
 		moved += move_set(data,
-				data->player.pos_x - data->player.dir_y * MOVESPEED,
-				data->player.pos_y + data->player.dir_x * MOVESPEED);
+				data->player.pos_x - data->player.dir_y * MOVE_SPEED,
+				data->player.pos_y + data->player.dir_x * MOVE_SPEED);
 	if (data->player.rotate != 0)
 		moved += rotate_player(data, data->player.rotate);
 	return (moved);

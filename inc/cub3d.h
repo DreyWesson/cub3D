@@ -6,7 +6,7 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 13:22:48 by doduwole          #+#    #+#             */
-/*   Updated: 2023/11/11 23:36:07 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/11/12 01:17:14 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,11 @@
 # define TILE_W  128
 # define TILE_H 128
 # define DEBUG 0
-# define MOVESPEED 0.0275
-# define ROTSPEED 0.015
+# define MOVE_SPEED 0.0275
+# define ROT_SPEED 0.015
+
+# define SHADOW 8355711
+# define FOUR_BYTE 4
 
 enum				e_status
 {
@@ -231,13 +234,18 @@ void			render_frame(t_data *data);
 void			update_texture_pixels(t_data *data, t_ray *ray, int x);
 void			render_images(t_data *data);
 int				ray_casting(t_data *data);
+int				check_map_boundaries(t_data *data, t_ray *ray);
+void			calc_line_height(t_ray *ray, t_data *data);
+void			calc_px_filler(t_ray *ray, t_data *data);
+void			calc_x_coord_pl_facing_left_up(t_data *data, t_ray *ray);
+void			handle_vert_wall_px(t_data *data, t_ray *ray, int x);
 int				update(t_data *data);
 int				move_player(t_data *data);
 int				rotate_player(t_data *data, double rotdir);
 int				end_program(t_data *data);
 int				build_graphics(t_data *data);
-int				key_release_handler(int key, t_data *data);
-int				key_press_handler(int key, t_data *data);
+int				key_release(int key, t_data *data);
+int				key_press(int key, t_data *data);
 /**
  * ******** BUILD GRAPHICS END ************
  */

@@ -6,7 +6,7 @@
 #    By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 13:21:00 by doduwole          #+#    #+#              #
-#    Updated: 2023/11/10 22:20:08 by doduwole         ###   ########.fr        #
+#    Updated: 2023/11/12 00:15:50 by doduwole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC =	main.c \
 		src/graphics/init/compass_init.c \
 		src/graphics/render_image/frames.c \
 		src/graphics/render_image/helper.c \
+		src/graphics/render_image/helper_two.c \
 		src/graphics/render_image/index.c \
 		src/graphics/render_image/raycasting.c \
 		src/graphics/update/index.c \

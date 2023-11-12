@@ -6,25 +6,14 @@
 /*   By: doduwole <doduwole@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:51:10 by loandrad          #+#    #+#             */
-/*   Updated: 2023/11/11 23:37:40 by doduwole         ###   ########.fr       */
+/*   Updated: 2023/11/12 01:20:46 by doduwole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../inc/cub3d.h"
 
-static void	calc_line_height(t_ray *ray, t_data *data)
+static void	texturing_calc(t_ray *ray, t_data *data)
 {
-	if (ray->side == 0)
-		ray->perp_wall_dist = (ray->side_dist_x - ray->delta_dist_x);
-	else
-		ray->perp_wall_dist = (ray->side_dist_y - ray->delta_dist_y);
-	ray->line_height = (int)(data->win_height / ray->perp_wall_dist);
-	ray->draw_start = -(ray->line_height) / 2 + data->win_height / 2;
-	if (ray->draw_start < 0)
-		ray->draw_start = 0;
-	ray->draw_end = ray->line_height / 2 + data->win_height / 2;
-	if (ray->draw_end >= data->win_height)
-		ray->draw_end = data->win_height - 1;
 	if (ray->side == 0)
 		ray->wall_x = data->player.pos_y + ray->perp_wall_dist * ray->dir_y;
 	else
@@ -32,16 +21,7 @@ static void	calc_line_height(t_ray *ray, t_data *data)
 	ray->wall_x -= floor(ray->wall_x);
 }
 
-static int check_map_boundaries(t_data *data,t_ray *ray)
-{
-	if (ray->map_y < 0.25 || ray->map_x < 0.25
-		|| ray->map_y > data->map_height - 0.25
-		|| ray->map_x > data->map_width - 1.25)
-		return (1);
-	return (0);
-}
-
-static void	run_dda(t_data *data, t_ray *ray)
+static void	perform_dda(t_data *data, t_ray *ray)
 {
 	int	hit_wall;
 
@@ -95,7 +75,7 @@ static void	calc_step_and_init_side_dist(t_ray *ray, t_data *data)
 	}
 }
 
-static void	init_ray_casting_info(int x, t_ray *ray, t_data *data)
+static void	init_ray_casting(int x, t_ray *ray, t_data *data)
 {
 	ft_memset((void *)&data->ray, 0, sizeof(data->ray));
 	ray->camera_x = 2 * x / (double)data->win_width - 1;
@@ -116,10 +96,12 @@ int	ray_casting(t_data *data)
 	ray = &data->ray;
 	while (x < data->win_width)
 	{
-		init_ray_casting_info(x, ray, data);
+		init_ray_casting(x, ray, data);
 		calc_step_and_init_side_dist(ray, data);
-		run_dda(data, ray);
+		perform_dda(data, ray);
 		calc_line_height(ray, data);
+		calc_px_filler(ray, data);
+		texturing_calc(ray, data);
 		update_texture_pixels(data, ray, x);
 		x++;
 	}
